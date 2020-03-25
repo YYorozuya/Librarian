@@ -14,7 +14,7 @@ public class EditBook extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         long id = Long.parseLong(request.getParameter("id"));
         String name = request.getParameter("name");
-        String author = request.getParameter("floor");
+        String author = request.getParameter("author");
         String category = request.getParameter("category");
         double price = Double.parseDouble(request.getParameter("price"));
         int floor = Integer.parseInt(request.getParameter("floor"));
