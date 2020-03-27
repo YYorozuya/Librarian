@@ -2,31 +2,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         version="4.0"
-         metadata-complete="true">
-    <servlet>
-        <servlet-name>AddBook</servlet-name>
-        <servlet-class>com.example.controller.AddBook</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DelBook</servlet-name>
-        <servlet-class>com.example.controller.DelBook</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditBook</servlet-name>
-        <servlet-class>com.example.controller.EditBook</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>AddBook</servlet-name>
-        <url-pattern>/addbook</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DelBook</servlet-name>
-        <url-pattern>/delbook</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditBook</servlet-name>
-        <url-pattern>/editbook</url-pattern>
-    </servlet-mapping>
+         version="4.0">
+
 </web-app>

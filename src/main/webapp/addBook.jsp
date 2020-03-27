@@ -9,6 +9,10 @@
 <form action="${pageContext.request.contextPath}/addbook" method="POST">
     <table>
         <tr>
+            <td>ISBN</td>
+            <td><input type="text" name="isbn"></td>
+        </tr>
+        <tr>
             <td>Name</td>
             <td><input type="text" name="name"></td>
         </tr>
@@ -37,8 +41,8 @@
             <td><input type="text" name="area"></td>
         </tr>
         <tr>
-            <td>Num</td>
-            <td><input type="text" name="num"></td>
+            <td>Amount</td>
+            <td><input type="text" name="amount"></td>
         </tr>
         <tr>
             <td>

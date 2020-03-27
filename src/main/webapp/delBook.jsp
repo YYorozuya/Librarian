@@ -15,7 +15,7 @@
 <form action="${pageContext.request.contextPath}/delbook" method="POST">
     <table>
         <tr>
-            <td>Num</td>
+            <td>ID</td>
             <td><input type="text" name="id"></td>
         </tr>
         <tr>

@@ -9,10 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "EditBook")
+@WebServlet(urlPatterns = "/editbook")
 public class EditBook extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        long id = Long.parseLong(request.getParameter("id"));
+        request.setCharacterEncoding("UTF-8");
+        String id = request.getParameter("id");
         String name = request.getParameter("name");
         String author = request.getParameter("author");
         String category = request.getParameter("category");
@@ -20,9 +21,8 @@ public class EditBook extends HttpServlet {
         int floor = Integer.parseInt(request.getParameter("floor"));
         int shelf = Integer.parseInt(request.getParameter("shelf"));
         int area = Integer.parseInt(request.getParameter("area"));
-        int num = Integer.parseInt(request.getParameter("num"));
 
-        BookService.editBook(id,name,author,category,price,floor,shelf,area,num);
+        BookService.editBook(id,name,author,category,price,floor,shelf,area);
 
         request.getRequestDispatcher("editReturn.jsp").forward(request,response);
     }

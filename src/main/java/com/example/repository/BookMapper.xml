@@ -4,20 +4,23 @@
 
 <mapper namespace="com.example.repository.BookRepository">
     <insert id="insert" parameterType="com.example.entity.Book">
-        INSERT INTO book (name,author,category,floor,shelf,area,price,num)
-            VALUES (#{name},#{author},#{category},#{floor},#{shelf},#{area},#{price},#{num})
+        INSERT INTO book (id,name,author,category,floor,shelf,area,price)
+            VALUES (#{id},#{name},#{author},#{category},#{floor},#{shelf},#{area},#{price})
     </insert>
-    <delete id="delete" parameterType="long">
+    <delete id="delete" parameterType="java.lang.String">
         DELETE FROM book WHERE id = #{id}
     </delete>
-    <update id="edit">
-        UPDATE book SET name = #{name}, author = #{author}, category = #{category}, price = #{price}, floor = #{floor}, shelf = #{shelf}, area = #{area}, num = #{num}
+    <update id="edit" parameterType="com.example.entity.Book">
+        UPDATE book SET name = #{name}, author = #{author}, category = #{category}, price = #{price}, floor = #{floor}, shelf = #{shelf}, area = #{area}
             WHERE id = #{id}
     </update>
     <select id="findAll" resultType="com.example.entity.Book">
         SELECT * FROM book
     </select>
-    <select id="findById" parameterType="long" resultType="com.example.entity.Book">
+    <select id="findById" parameterType="java.lang.String" resultType="com.example.entity.Book">
         SELECT * FROM book WHERE id = #{id}
+    </select>
+    <select id="maxId" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT MAX(id) FROM book WHERE id LIKE CONCAT(#{isbn},'%')
     </select>
 </mapper>

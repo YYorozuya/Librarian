@@ -19,7 +19,6 @@
         <th>Floor</th>
         <th>Shelf</th>
         <th>Area</th>
-        <th>Num</th>
     </tr>
     <%for ( Book book:bookList){ %>
     <tr>
@@ -31,7 +30,6 @@
         <td><%=book.getFloor()%></td>
         <td><%=book.getShelf()%></td>
         <td><%=book.getArea()%></td>
-        <td><%=book.getNum()%></td>
     </tr>
     <%}%>
 

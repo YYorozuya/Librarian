@@ -8,7 +8,8 @@ import java.util.List;
 public interface BookRepository {
     int insert(Book book);
     int edit(Book book);
-    int delete(long id);
+    int delete(String id);
     List<Book> findAll();
-    Book findById(long id);
+    Book findById(String id);
+    String maxId(String isbn);
 }

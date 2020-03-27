@@ -11,7 +11,7 @@
     <title>editbook</title>
 </head>
 <body>
-<h1>Input the right ID to edit the corresponding book:</h1>
+<h1>Input the  ID to edit the exact book:</h1>
 <form action="${pageContext.request.contextPath}/editbook" method="POST">
     <table>
         <tr>
@@ -45,10 +45,6 @@
         <tr>
             <td>Area</td>
             <td><input type="text" name="area"></td>
-        </tr>
-        <tr>
-            <td>Num</td>
-            <td><input type="text" name="num"></td>
         </tr>
         <tr>
             <td>

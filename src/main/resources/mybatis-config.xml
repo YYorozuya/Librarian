@@ -14,10 +14,10 @@
             </dataSource>
         </environment>
     </environments>
-    <!--<mappers>
-        <mapper resource="org/mybatis/example/BlogMapper.xml"/>
-</mappers>-->
+
     <mappers>
         <mapper resource="com/example/repository/BookMapper.xml"/>
+        <mapper resource="com/example/repository/ReaderMapper.xml"/>
     </mappers>
+
 </configuration>

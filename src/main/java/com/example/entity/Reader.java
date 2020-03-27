@@ -7,13 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Book {
+public class Reader {
     private String id;
+    private String passwd;
     private String name;
-    private String author;
-    private String category;
-    private double price;
-    private int floor;
-    private int shelf;
-    private int area;
 }
