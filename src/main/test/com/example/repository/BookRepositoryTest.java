@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BookRepositoryTest {
     @Test
-    void repoTest () {
+    void test() {
         /*int test;
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BookRepository br = sqlSession.getMapper(BookRepository.class);
@@ -21,6 +21,5 @@ class BookRepositoryTest {
         String id = "isbn" + df.format(5);
         System.out.println(id);
     }
-
 
 }

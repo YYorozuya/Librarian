@@ -23,7 +23,7 @@ public class AddBook extends HttpServlet {
         int area = Integer.parseInt(request.getParameter("area"));
         int amount = Integer.parseInt(request.getParameter("amount"));
 
-        BookService.addBook(isbn,name,author,category,price,floor,shelf,area,amount);
+        BookService.add(isbn,name,author,category,price,floor,shelf,area,amount);
 
         request.getRequestDispatcher("addReturn.jsp").forward(request,response);
     }

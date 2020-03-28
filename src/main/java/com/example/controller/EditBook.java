@@ -22,7 +22,7 @@ public class EditBook extends HttpServlet {
         int shelf = Integer.parseInt(request.getParameter("shelf"));
         int area = Integer.parseInt(request.getParameter("area"));
 
-        BookService.editBook(id,name,author,category,price,floor,shelf,area);
+        BookService.edit(id,name,author,category,price,floor,shelf,area);
 
         request.getRequestDispatcher("editReturn.jsp").forward(request,response);
     }

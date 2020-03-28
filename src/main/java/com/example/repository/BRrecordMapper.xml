@@ -1,0 +1,17 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.repository.BRrecordRepository">
+    <insert id="borrow" parameterType="com.example.entity.BRrecord">
+        INSERT INTO br_record (id, bid, rid, btime, rtime)
+            VALUES (#{id}, #{bid}, #{rid}, #{btime}, #{rtime})
+    </insert>
+    <update id="returnb">
+        UPDATE br_record SET rtime = #{time} WHERE id = #{id}
+    </update>
+    <select id="findAll" resultType="com.example.entity.BRrecord">
+        SELECT * FROM br_record
+    </select>
+
+</mapper>

@@ -7,5 +7,16 @@
         INSERT INTO reader (id, passwd, name)
             VALUES (#{id}, #{passwd}, #{name})
     </insert>
-
+    <update id="edit" parameterType="com.example.entity.Reader">
+        UPDATE reader SET passwd = #{passwd}, name = #{name} WHERE id = #{id}
+    </update>
+    <delete id="delete" parameterType="java.lang.String">
+        DELETE FROM reader WHERE id = #{id}
+    </delete>
+    <select id="findAll" resultType="com.example.entity.Reader">
+        SELECT * FROM reader
+    </select>
+    <select id="findById" parameterType="java.lang.String" resultType="com.example.entity.Reader">
+        SELECT * FROM reader WHERE id = #{id}
+    </select>
 </mapper>

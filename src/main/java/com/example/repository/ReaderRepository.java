@@ -9,4 +9,5 @@ public interface ReaderRepository {
     int edit(Reader reader);
     int delete(String id);
     List<Reader> findAll();
+    Reader findById(String id);
 }
