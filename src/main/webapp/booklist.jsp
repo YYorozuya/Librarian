@@ -7,7 +7,7 @@
 <html>
 <body>
 <%
-    List<Book> bookList = BookService.findAll();
+    List<Book> bookList = BookService.bookList();
 %>
 <table border="1">
     <tr>

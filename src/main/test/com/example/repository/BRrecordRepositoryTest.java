@@ -12,10 +12,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class BRrecordRepositoryTest {
     @Test
     void test() {
-        int test;
+        long test;
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BRrecordRepository br = sqlSession.getMapper(BRrecordRepository.class);
-        test = br.returnb(2,1000000000000000L);
+        test = br.getBNum("123");
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         System.out.println(test);

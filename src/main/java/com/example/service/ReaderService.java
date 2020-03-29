@@ -5,11 +5,13 @@ import com.example.repository.ReaderRepository;
 import com.example.utils.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
+import java.time.Instant;
 import java.util.List;
 
 public class ReaderService {
     public static int register(String id, String passwd, String name) {
-        Reader reader = new Reader(id,passwd,name);
+        long now = Instant.now().getEpochSecond(); //获得当前以秒为单位的时间戳
+        Reader reader = new Reader(id,passwd,name,now);
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         ReaderRepository rr = sqlSession.getMapper(ReaderRepository.class);
         int result = rr.insert(reader);
@@ -30,7 +32,7 @@ public class ReaderService {
     public static int edit(String id, String passwd, String name) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         ReaderRepository rr = sqlSession.getMapper(ReaderRepository.class);
-        int result = rr.edit(new Reader(id,passwd,name));
+        int result = rr.edit(new Reader(id,passwd,name,0L));
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return result;

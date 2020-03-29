@@ -1,5 +1,6 @@
 package com.example.entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,9 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reader {
-    private String id;
-    private String passwd;
-    private String name;
-    private long ctime; //创建时间
+public class FineRecord {
+    private int id; //记录的id
+    private long time; //缴纳时间
 }

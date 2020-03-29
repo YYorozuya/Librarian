@@ -4,8 +4,8 @@
 
 <mapper namespace="com.example.repository.ReaderRepository">
     <insert id="insert" parameterType="com.example.entity.Reader">
-        INSERT INTO reader (id, passwd, name)
-            VALUES (#{id}, #{passwd}, #{name})
+        INSERT INTO reader (id, passwd, name, ctime)
+            VALUES (#{id}, #{passwd}, #{name}, #{ctime})
     </insert>
     <update id="edit" parameterType="com.example.entity.Reader">
         UPDATE reader SET passwd = #{passwd}, name = #{name} WHERE id = #{id}

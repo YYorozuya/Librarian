@@ -47,7 +47,7 @@ public class BookService {
         return find;
     }
 
-    public static List<Book> findAll() {
+    public static List<Book> bookList() {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BookRepository br = sqlSession.getMapper(BookRepository.class);
         List<Book> list = br.findAll();
