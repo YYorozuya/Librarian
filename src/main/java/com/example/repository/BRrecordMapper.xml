@@ -4,8 +4,8 @@
 
 <mapper namespace="com.example.repository.BRrecordRepository">
     <insert id="borrow" parameterType="com.example.entity.BRrecord">
-        INSERT INTO br_record (id, bid, rid, btime, rtime)
-            VALUES (#{id}, #{bid}, #{rid}, #{btime}, #{rtime})
+        INSERT INTO br_record (id, bkid, rid, btime, rtime)
+            VALUES (#{id}, #{bkid}, #{rid}, #{btime}, #{rtime})
     </insert>
     <update id="returnb">
         UPDATE br_record SET rtime = #{time} WHERE id = #{id}
@@ -20,7 +20,7 @@
         SELECT COUNT(*) FROM br_record WHERE rid = #{rid} AND rtime = 0
     </select>
     <select id="check" parameterType="java.lang.String" resultType="java.lang.Long">
-        SELECT rtime FROM br_record WHERE bid = #{bid} ORDER BY btime DESC LIMIT 1
+        SELECT rtime FROM br_record WHERE bkid = #{bkid} ORDER BY btime DESC LIMIT 1
     </select><!--降序取第一列-->
     <select id="getBTime" parameterType="int" resultType="java.lang.Long">
         SELECT btime FROM br_record WHERE id = #{id}

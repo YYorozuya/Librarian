@@ -21,7 +21,7 @@ public class BookService {
         DecimalFormat df = new DecimalFormat("0000");
         for (int i = 0; i < ammount; i++) {
             String id = isbn + df.format(++current);//正在添加书籍的ID,每添加一个副本就递增
-            Book book = new Book(id,name,author,category,price,floor,shelf,area);
+            Book book = new Book(id,name,author,category,price,floor,shelf,area,0);
             br.insert(book);
         }
         sqlSession.commit();
@@ -59,7 +59,7 @@ public class BookService {
     public static int edit(String id, String name, String author, String category, double price, int floor, int shelf, int area) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BookRepository br = sqlSession.getMapper(BookRepository.class);
-        int result = br.edit(new Book(id,name,author,category,price,floor,shelf,area));
+        int result = br.edit(new Book(id,name,author,category,price,floor,shelf,area,0));
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return result;

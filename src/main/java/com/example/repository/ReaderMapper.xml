@@ -4,11 +4,11 @@
 
 <mapper namespace="com.example.repository.ReaderRepository">
     <insert id="insert" parameterType="com.example.entity.Reader">
-        INSERT INTO reader (id, passwd, name, ctime)
-            VALUES (#{id}, #{passwd}, #{name}, #{ctime})
+        INSERT INTO reader (id, passwd, name, email, ctime, deposit)
+            VALUES (#{id}, #{passwd}, #{name}, #{email}, #{ctime}, #{deposit})
     </insert>
     <update id="edit" parameterType="com.example.entity.Reader">
-        UPDATE reader SET passwd = #{passwd}, name = #{name} WHERE id = #{id}
+        UPDATE reader SET passwd = #{passwd}, name = #{name}, email = #{email} WHERE id = #{id}
     </update>
     <delete id="delete" parameterType="java.lang.String">
         DELETE FROM reader WHERE id = #{id}

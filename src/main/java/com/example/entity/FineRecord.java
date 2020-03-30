@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FineRecord {
-    private int id; //记录的id
+    private BRrecord record; //违规的记录
+    private double amount; //罚款金额
     private long time; //缴纳时间
 }

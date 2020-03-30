@@ -2,13 +2,25 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.repository.FineRepository">
-    <insert id="insert" parameterType="com.example.entity.FineRecord">
-        INSERT INTO fine (id, time)VALUES (#{id}, #{time})
+    <resultMap id="FineRecordMap" type="com.example.entity.FineRecord">
+        <id column="id"/><!--如果不指定id，当其他所有列有相同的值时重复记录不会加入到结果集中-->
+        <result column="time" property="time"/>
+        <association property="record" javaType="com.example.entity.BRrecord">
+            <id column="id" property="id"/>
+            <result column="bkid" property="bkid" />
+            <result column="rid" property="rid"/>
+            <result column="btime" property="btime"/>
+            <result column="rtime" property="rtime"/>
+        </association>
+    </resultMap>
+    <insert id="insert">
+        INSERT INTO fine (id,amount,time) VALUES (#{id},#{amount},0)
     </insert>
     <update id="pay">
-        UPDATE fine SET time = #{time} WHERE id = #{id}
+        UPDATE fine SET amount = #{amount}, time = #{time} WHERE id = #{id}
     </update>
-    <select id="findAll" resultType="com.example.entity.FineRecord">
-        SELECT * FROM fine
+    <select id="findAll" resultMap="FineRecordMap">
+        SELECT f.id, bkid, rid, btime, rtime, time
+            FROM fine f, br_record b WHERE f.id = b.id
     </select>
 </mapper>

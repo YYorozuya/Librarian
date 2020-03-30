@@ -4,8 +4,8 @@
 
 <mapper namespace="com.example.repository.BookRepository">
     <insert id="insert" parameterType="com.example.entity.Book">
-        INSERT INTO book (id,name,author,category,floor,shelf,area,price)
-            VALUES (#{id},#{name},#{author},#{category},#{floor},#{shelf},#{area},#{price})
+        INSERT INTO book (id,name,author,category,price,floor,shelf,area,reserved)
+            VALUES (#{id},#{name},#{author},#{category},#{price},#{floor},#{shelf},#{area},#{reserved})
     </insert>
     <delete id="delete" parameterType="java.lang.String">
         DELETE FROM book WHERE id = #{id}

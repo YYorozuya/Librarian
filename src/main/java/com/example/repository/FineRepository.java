@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface FineRepository {
-    int insert(FineRecord record);
-    int pay(@Param("id")int id, @Param("time")long time);
+    int insert(@Param("id")int id, @Param("amount")double amount);
+    int pay(@Param("id")int id, @Param("time")long time, @Param("amount")double amount);
     List<FineRecord> findAll();
 }

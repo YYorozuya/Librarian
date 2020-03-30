@@ -53,7 +53,7 @@ public class BusinessService {
         long borrowTime = brr.getBTime(id);
         if (borrowTime < pastLong) { //超过90天加入罚款记录
             FineRepository fr = sqlSession.getMapper(FineRepository.class);
-            fr.insert(new FineRecord(id,0L));
+            fr.insert(id,1);
         }
 
         int result = brr.returnb(id,nowLong);
@@ -61,7 +61,6 @@ public class BusinessService {
         MyBatisUtil.closeSqlSession(sqlSession);
         return result;
     }
-
 
     public List<BRrecord> BRlist() {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
@@ -71,7 +70,6 @@ public class BusinessService {
         MyBatisUtil.closeSqlSession(sqlSession);
         return list;
     }
-
 
     public BRrecord findById(int id) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
@@ -87,12 +85,11 @@ public class BusinessService {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         FineRepository fr = sqlSession.getMapper(FineRepository.class);
         long now = Instant.now().getEpochSecond();
-        int result = fr.pay(id, now);
+        int result = fr.pay(id, now,1);
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return result;
     }
-
 
     public static List<FineRecord> fineList() {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
@@ -101,6 +98,15 @@ public class BusinessService {
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return list;
+    }
+
+    public static double[] deposit() {
+        double[] d = new double[3];
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime day = now.withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime month = now.withDayOfMonth(1).withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime year = now.withDayOfYear(1).withHour(0).withMinute(0).withSecond(0);
+        return d;
     }
 
 }

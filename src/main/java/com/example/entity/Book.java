@@ -16,4 +16,5 @@ public class Book {
     private int floor;
     private int shelf;
     private int area;
+    private int reserved;
 }

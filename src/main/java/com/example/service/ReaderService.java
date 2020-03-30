@@ -9,9 +9,9 @@ import java.time.Instant;
 import java.util.List;
 
 public class ReaderService {
-    public static int register(String id, String passwd, String name) {
+    public static int register(String id, String passwd, String name, String email) {
         long now = Instant.now().getEpochSecond(); //获得当前以秒为单位的时间戳
-        Reader reader = new Reader(id,passwd,name,now);
+        Reader reader = new Reader(id,passwd,name,email,now,300);
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         ReaderRepository rr = sqlSession.getMapper(ReaderRepository.class);
         int result = rr.insert(reader);
@@ -29,10 +29,10 @@ public class ReaderService {
         return result;
     }
 
-    public static int edit(String id, String passwd, String name) {
+    public static int edit(String id, String passwd, String name, String email) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         ReaderRepository rr = sqlSession.getMapper(ReaderRepository.class);
-        int result = rr.edit(new Reader(id,passwd,name,0L));
+        int result = rr.edit(new Reader(id,passwd,name,email,0L,300));
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return result;
