@@ -20,6 +20,7 @@
         <mapper resource="com/example/repository/ReaderMapper.xml"/>
         <mapper resource="com/example/repository/BRrecordMapper.xml"/>
         <mapper resource="com/example/repository/FineMapper.xml"/>
+        <mapper resource="com/example/repository/NewsMapper.xml"/>
     </mappers>
 
 </configuration>

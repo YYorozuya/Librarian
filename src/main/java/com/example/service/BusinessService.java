@@ -2,13 +2,17 @@ package com.example.service;
 
 import com.example.entity.BRrecord;
 import com.example.entity.FineRecord;
+import com.example.entity.News;
 import com.example.repository.BRrecordRepository;
 import com.example.repository.FineRepository;
+import com.example.repository.NewsRepository;
+import com.example.repository.ReaderRepository;
 import com.example.utils.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BusinessService {
@@ -100,13 +104,78 @@ public class BusinessService {
         return list;
     }
 
-    public static double[] deposit() {
-        double[] d = new double[3];
+    //返回一个List，前三项分别为保证金本年收入，本月收入，本日收入
+    public static List<Double> totalDeposit() {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        ReaderRepository rr = sqlSession.getMapper(ReaderRepository.class);
         LocalDateTime now = LocalDateTime.now();
-        LocalDateTime day = now.withHour(0).withMinute(0).withSecond(0);
-        LocalDateTime month = now.withDayOfMonth(1).withHour(0).withMinute(0).withSecond(0);
         LocalDateTime year = now.withDayOfYear(1).withHour(0).withMinute(0).withSecond(0);
-        return d;
+        LocalDateTime month = now.withDayOfMonth(1).withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime day = now.withHour(0).withMinute(0).withSecond(0);
+        Double sumY = rr.sumBy(year.atZone(ZoneId.systemDefault()).toEpochSecond());
+        Double sumM = rr.sumBy(month.atZone(ZoneId.systemDefault()).toEpochSecond());
+        Double sumD = rr.sumBy(day.atZone(ZoneId.systemDefault()).toEpochSecond());
+        sqlSession.commit();
+        MyBatisUtil.closeSqlSession(sqlSession);
+        if(sumY == null)
+            sumY = 0.0;
+        if(sumM == null)
+            sumM = 0.0;
+        if(sumD == null)
+            sumD = 0.0;
+        List<Double> list = new ArrayList<>();
+        list.add(sumY);
+        list.add(sumM);
+        list.add(sumD);
+        return list;
+    }
+
+    //返回一个List，前三项分别为罚金本年收入，本月收入，本日收入
+    public static List<Double> totalFine() {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        FineRepository fr = sqlSession.getMapper(FineRepository.class);
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime year = now.withDayOfYear(1).withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime month = now.withDayOfMonth(1).withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime day = now.withHour(0).withMinute(0).withSecond(0);
+        Double sumY = fr.sumBy(year.atZone(ZoneId.systemDefault()).toEpochSecond());
+        Double sumM = fr.sumBy(month.atZone(ZoneId.systemDefault()).toEpochSecond());
+        Double sumD = fr.sumBy(day.atZone(ZoneId.systemDefault()).toEpochSecond());
+        sqlSession.commit();
+        MyBatisUtil.closeSqlSession(sqlSession);
+        if(sumY == null)
+            sumY = 0.0;
+        if(sumM == null)
+            sumM = 0.0;
+        if(sumD == null)
+            sumD = 0.0;
+        List<Double> list = new ArrayList<>();
+        list.add(sumY);
+        list.add(sumM);
+        list.add(sumD);
+        return list;
+    }
+
+    //发送公告
+    public static int postNews(String title, String content) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        NewsRepository nr = sqlSession.getMapper(NewsRepository.class);
+        long now = Instant.now().getEpochSecond(); //获得当前以秒为单位的时间戳
+        News news = new News(0,title,content,now);
+        int result = nr.insert(news);
+        sqlSession.commit();
+        MyBatisUtil.closeSqlSession(sqlSession);
+        return result;
+    }
+
+    //删除公告
+    public static int deleteNews(int id) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        NewsRepository nr = sqlSession.getMapper(NewsRepository.class);
+        int result = nr.delete(id);
+        sqlSession.commit();
+        MyBatisUtil.closeSqlSession(sqlSession);
+        return result;
     }
 
 }

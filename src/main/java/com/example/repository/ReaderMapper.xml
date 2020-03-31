@@ -19,4 +19,7 @@
     <select id="findById" parameterType="java.lang.String" resultType="com.example.entity.Reader">
         SELECT * FROM reader WHERE id = #{id}
     </select>
+    <select id="sumBy" parameterType="long" resultType="java.lang.Double">
+        SELECT SUM(deposit) FROM reader WHERE ctime > #{since}
+    </select>
 </mapper>
