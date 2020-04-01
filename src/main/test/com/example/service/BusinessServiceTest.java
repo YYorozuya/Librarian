@@ -24,7 +24,9 @@ class BusinessServiceTest {
 
         //long l2 = Instant.now().getEpochSecond();
 
-        test = BusinessService.deleteNews(0);
+        //test = BusinessService.postNews("dadfsgfd","dsfdgfd");
+        test = BusinessService.editNews(1,"安抚","阿斯弗");
+        //test = BusinessService.deleteNews(0);
         System.out.println(test);
 
         //System.out.println(test);

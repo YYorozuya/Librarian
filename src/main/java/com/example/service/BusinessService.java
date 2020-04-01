@@ -178,4 +178,14 @@ public class BusinessService {
         return result;
     }
 
+    public static int editNews(int id, String title, String content) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        NewsRepository nr = sqlSession.getMapper(NewsRepository.class);
+        News news = new News(id,title,content,0);
+        int result = nr.edit(news);
+        sqlSession.commit();
+        MyBatisUtil.closeSqlSession(sqlSession);
+        return result;
+    }
+
 }

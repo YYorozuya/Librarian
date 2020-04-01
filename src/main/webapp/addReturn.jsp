@@ -1,10 +1,5 @@
-<%@ page import="com.example.service.BookService" %><%--
-  Created by IntelliJ IDEA.
-  User: 75192
-  Date: 2020/3/25
-  Time: 17:07
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.example.service.BookService" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,8 +7,8 @@
 </head>
 <body>
     <h1>The book was added</h1>
-    <table border="1">
-<%--        <tr>
+   <%-- <table border="1">
+       <tr>
             <th>Id</th>
             <th>Name</th>
             <th>Author</th>
@@ -25,8 +20,8 @@
             <th>Num</th>
         </tr>
         <tr>
-        </tr>--%>
-    </table>
+        </tr>
+    </table>--%>
 
 </body>
 </html>
