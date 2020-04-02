@@ -14,6 +14,13 @@
         UPDATE book SET name = #{name}, author = #{author}, category = #{category}, price = #{price}, floor = #{floor}, shelf = #{shelf}, area = #{area}
             WHERE id = #{id}
     </update>
+    <update id="editByIsbn">
+          UPDATE book SET name = #{name}, author = #{author}, category = #{category}, price = #{price}, floor = #{floor}, shelf = #{shelf}, area = #{area}
+            WHERE id LIKE CONCAT(#{isbn},'%')
+    </update>
+    <select id="findByIsbn" parameterType="java.lang.String" resultType="com.example.entity.Book">
+        SELECT * FROM book WHERE id LIKE CONCAT(#{isbn},'%')
+    </select>
     <select id="findAll" resultType="com.example.entity.Book">
         SELECT * FROM book
     </select>

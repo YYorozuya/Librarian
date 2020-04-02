@@ -1,7 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,24 +52,30 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="home"><a href="index.jsp">Home</a></li>
-                <li class="home"><a href="booklist.jsp">BookList</a></li>
-                <li class="home"><a href="addBook.jsp">AddBook</a></li>
-                <li class="home"><a href="delBook.jsp">DeleteBook</a></li>
-                <li class="active home"><a href="editBook.jsp">EditBook</a></li>
+                <li class="dropdown active home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
+                    <ul class="dropdown-menu">
+                        <li class="home"><a href="bookList.jsp">BookList</a></li>
+                        <li class="home"><a href="addBook.jsp">AddBook</a></li>
+                        <li class="home"><a href="delBook.jsp">DeleteBook</a></li>
+                        <li class="active home"><a href="editBook.jsp">EditBook</a></li>
+                    </ul>
+                </li>
+                <li class="home"><a href="addBook.jsp">Reader</a></li>
+                <li class="home"><a href="delBook.jsp">Records</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
     <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
-        <h1 style="font-size:40px;color:purple;text-align:center"><em>Edit Book By ID</em></h1>
+        <h1 style="font-size:40px;color:purple;text-align:center"><em>Edit Books</em></h1>
     </div>
     <div class="rg_area" style="background-color:white;margin:auto;height:70%;width:1000px;border:1px solid black;border-radius:3px;">
         <form style="padding-left:200px;padding-top:50px;padding-right:200px;"
               action="${pageContext.request.contextPath}/editbook" method="POST">
-            <div><p style="font-size:20px;color:orange;">Please input new book information:</p></div>
+            <div><p style="font-size:20px;color:orange;">Edit books with exact ISBN</p></div>
             <div class="form-group">
-                <label for="ID">ID</label>
-                <input type="text" class="form-control" id="ID" placeholder="ID" name="id">
+                <label for="ISBN">ISBN</label>
+                <input type="text" class="form-control" id="ISBN" placeholder="ISBN" name="isbn">
             </div>
             <div class="form-group">
                 <label for="Name">Name</label>
@@ -98,10 +104,6 @@
             <div class="form-group">
                 <label for="Area">Area</label>
                 <input type="text" class="form-control" id="Area" placeholder="Area" name="area">
-            </div>
-            <div class="form-group">
-                <label for="Amount">Amount</label>
-                <input type="text" class="form-control" id="Amount" placeholder="Amount" name="amount">
             </div>
             <button type="submit" class="btn btn-default">Edit</button>
         </form>

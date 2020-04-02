@@ -1,30 +1,32 @@
-<%@ page import="com.example.service.BookService" %>
-<%@ page import="com.example.entity.Book" %>
 <%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.example.entity.Book" %>
+<%@ page import="com.example.service.BookService" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 
-<% List<Book> bookList = BookService.findByIsbn(request.getParameter("isbn"));%>
+
+<% List<Book> bookList = BookService.bookList();%>
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>EditBook</title>
+    <title>BookList</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <style>
         body{
             background-color:#666666;
         }
         .image_1{
-            padding-right:10px;
+                padding-right:10px;
         }
         .home{
-            padding-right:20px;
+                padding-right:20px;
         }
         .rg_5{
             border:1px;
@@ -36,9 +38,9 @@
             clear:both;
         }
     </style>
-
 </head>
 <body>
+
     <nav class="navbar navbar-default" style="margin-bottom:0px;">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -57,10 +59,10 @@
                 <li class="home"><a href="${pageContext.request.contextPath}">Home</a></li>
                 <li class="dropdown active home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
                     <ul class="dropdown-menu">
-                        <li><a href="bookList.jsp">BookList</a></li>
+                        <li class="active"><a href="bookList.jsp">BookList</a></li>
                         <li><a href="addBook.jsp">AddBook</a></li>
                         <li><a href="delBook.jsp">DeleteBook</a></li>
-                        <li class="active"><a href="editBook.jsp">EditBook</a></li>
+                        <li><a href="editBook.jsp">EditBook</a></li>
                     </ul>
                 </li>
                 <li class="home"><a href="addBook.jsp">Reader</a></li>
@@ -69,41 +71,40 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+
     <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
-    <h1 style="font-size:40px;color:purple;text-align:center"><em>Edit Books</em></h1>
-</div>
-    <div class="rg_area" style="background-color:white;margin:auto;height:900px;width:70%;border:1px solid black;border-radius:3px;">
-    <div><p style="margin-left:30px;font-size:20px;color:orange;">Succeed.</p></div>
-    <table class="table table-striped" style="width: 95%; margin: auto">
-        <caption>Check the books with ISBN <%=request.getParameter("isbn")%> </caption>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Author</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Floor</th>
-            <th>Shelf</th>
-            <th>Area</th>
-        </tr>
-        </thead>
-        <tbody>
-        <%for ( Book book:bookList){ %>
-        <tr>
-            <td><%=book.getId()%></td>
-            <td><%=book.getName()%></td>
-            <td><%=book.getAuthor()%></td>
-            <td><%=book.getCategory()%></td>
-            <td><%=book.getPrice()%></td>
-            <td><%=book.getFloor()%></td>
-            <td><%=book.getShelf()%></td>
-            <td><%=book.getArea()%></td>
-        </tr>
-        <%}%>
-        </tbody>
-    </table>
-</div>
+        <h1 style="font-size:40px; color:purple; text-align:center"><em>Book List</em></h1>
+    </div>
+    <div class="rg_area" style="background-color:white;margin:auto;width:70%;border:1px solid black;border-radius:3px;">
+        <table class="table table-striped" style="width:95%;margin:auto">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Floor</th>
+                <th>Shelf</th>
+                <th>Area</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%for ( Book book:bookList){ %>
+            <tr>
+                <td><%=book.getId()%></td>
+                <td><%=book.getName()%></td>
+                <td><%=book.getAuthor()%></td>
+                <td><%=book.getCategory()%></td>
+                <td><%=book.getPrice()%></td>
+                <td><%=book.getFloor()%></td>
+                <td><%=book.getShelf()%></td>
+                <td><%=book.getArea()%></td>
+            </tr>
+            <%}%>
+            </tbody>
+        </table>
+    </div>
     <div class="rg_5">Copyright @Mandarin-Library</div>
 </body>
 </html>

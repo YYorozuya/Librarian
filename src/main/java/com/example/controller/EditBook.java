@@ -13,7 +13,7 @@ import java.io.IOException;
 public class EditBook extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String id = request.getParameter("id");
+        String isbn = request.getParameter("isbn");
         String name = request.getParameter("name");
         String author = request.getParameter("author");
         String category = request.getParameter("category");
@@ -22,12 +22,12 @@ public class EditBook extends HttpServlet {
         int shelf = Integer.parseInt(request.getParameter("shelf"));
         int area = Integer.parseInt(request.getParameter("area"));
 
-        BookService.edit(id,name,author,category,price,floor,shelf,area);
+        BookService.editByIsbn(isbn,name,author,category,price,floor,shelf,area);
 
         request.getRequestDispatcher("editReturn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+
     }
 }

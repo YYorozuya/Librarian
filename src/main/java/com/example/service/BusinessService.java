@@ -66,6 +66,7 @@ public class BusinessService {
         return result;
     }
 
+    //获得借还书的记录
     public List<BRrecord> BRlist() {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BRrecordRepository brr = sqlSession.getMapper(BRrecordRepository.class);
@@ -75,6 +76,7 @@ public class BusinessService {
         return list;
     }
 
+    //按照id查找借还书记录
     public BRrecord findById(int id) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BRrecordRepository brr = sqlSession.getMapper(BRrecordRepository.class);
@@ -95,6 +97,7 @@ public class BusinessService {
         return result;
     }
 
+    //获得罚款记录
     public static List<FineRecord> fineList() {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         FineRepository fr = sqlSession.getMapper(FineRepository.class);

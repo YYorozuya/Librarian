@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html lang="zh-CN">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,30 +44,36 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <img class="image_1" src="${pageContext.request.contextPath}/resource/img/logo2.png" alt = "logo" height="50px" width="100px">
+            <img class="image_1" src="${pageContext.request.contextPath}/resource/img/logo2.png" alt="logo" height="50px" width="100px">
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="home"><a href="index.jsp">Home</a></li>
-                <li class="home"><a href="booklist.jsp">BookList</a></li>
-                <li class="home"><a href="addBook.jsp">AddBook</a></li>
-                <li class="active home"><a href="delBook.jsp">DeleteBook</a></li>
-                <li class="home"><a href="editBook.jsp">EditBook</a></li>
+                <li class="home"><a href="${pageContext.request.contextPath}">Home</a></li>
+                <li class="dropdown active home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="bookList.jsp">BookList</a></li>
+                        <li><a href="addBook.jsp">AddBook</a></li>
+                        <li class="active"><a href="delBook.jsp">DeleteBook</a></li>
+                        <li><a href="editBook.jsp">EditBook</a></li>
+                    </ul>
+                </li>
+                <li class="home"><a href="addBook.jsp">Reader</a></li>
+                <li class="home"><a href="delBook.jsp">Records</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
     </nav>
     <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
-        <h1 style="font-size:40px;color:purple;text-align:center"><em>Delete Book By ID</em></h1>
+        <h1 style="font-size:40px;color:purple;text-align:center"><em>Delete Book</em></h1>
     </div>
     <div class="rg_area" style="background-color:white;margin:auto;height:70%;width:1000px;border:1px solid black;border-radius:3px;">
         <form style="padding-left:200px;padding-top:50px;padding-right:200px;"
               action="${pageContext.request.contextPath}/delbook" method="POST">
-
+            <div><p style="font-size:20px;color:orange;">Delete a book by ID</p></div>
             <div class="form-group">
                 <label for="BookID">ID</label>
-                <input type="text" class="form-control" id="BookID" placeholder="Amount" name="id">
+                <input type="text" class="form-control" id="BookID" placeholder="The ID of the book to be deleted" name="id">
             </div>
             <button type="submit" class="btn btn-default">Delete</button>
 

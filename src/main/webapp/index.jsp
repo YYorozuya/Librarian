@@ -2,7 +2,7 @@
          pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,26 +40,32 @@
     <nav class="navbar navbar-default" style="margin-bottom:0px;">
         <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <img class="image_1" src="${pageContext.request.contextPath}/resource/img/logo2.png" alt = "logo" height="50px" width="100px">
-            </div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img class="image_1" src="${pageContext.request.contextPath}/resource/img/logo2.png" alt="logo" height="50px" width="100px">
+        </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                <li class="active home"><a href="${pageContext.request.contextPath}/">Home</a></li>
-                <li class="home"><a href="booklist.jsp">BookList</a></li>
-                <li class="home"><a href="addBook.jsp">AddBook</a></li>
-                <li class="home"><a href="delBook.jsp">DeleteBook</a></li>
-                <li class="home"><a href="editBook.jsp">EditBook</a></li>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active home"><a href="${pageContext.request.contextPath}">Home</a></li>
+                <li class="dropdown home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
+                    <ul class="dropdown-menu">
+                        <li class="home"><a href="bookList.jsp">BookList</a></li>
+                        <li class="home"><a href="addBook.jsp">AddBook</a></li>
+                        <li class="home"><a href="delBook.jsp">DeleteBook</a></li>
+                        <li class="home"><a href="editBook.jsp">EditBook</a></li>
+                    </ul>
+                </li>
+                <li class="home"><a href="addBook.jsp">Reader</a></li>
+                <li class="home"><a href="delBook.jsp">Records</a></li>
             </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
     </nav>
 
     <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
