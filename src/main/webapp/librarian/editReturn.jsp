@@ -49,22 +49,43 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <img class="image_1" src="${pageContext.request.contextPath}/resource/img/logo2.png" alt="logo" height="50px" width="100px">
+            <img class="image_1" src="${pageContext.request.contextPath}/img/logo2.png" alt="logo" height="50px" width="100px">
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="home"><a href="${pageContext.request.contextPath}">Home</a></li>
+                <li class="home"><a href="${pageContext.request.contextPath}/">Home</a></li>
                 <li class="dropdown active home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
                     <ul class="dropdown-menu">
-                        <li><a href="bookList.jsp">BookList</a></li>
-                        <li><a href="addBook.jsp">AddBook</a></li>
-                        <li><a href="delBook.jsp">DeleteBook</a></li>
-                        <li class="active"><a href="editBook.jsp">EditBook</a></li>
+                        <li><a href="${pageContext.request.contextPath}/librarian/bookList.jsp">BookList</a></li>
+                        <li><a href="${pageContext.request.contextPath}/librarian/addBook.jsp">AddBook</a></li>
+                        <li><a href="${pageContext.request.contextPath}/librarian/delBook.jsp">DeleteBook</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/librarian/editBook.jsp">EditBook</a></li>
                     </ul>
                 </li>
                 <li class="home"><a href="addBook.jsp">Reader</a></li>
                 <li class="home"><a href="delBook.jsp">Records</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <% //判断是否为登陆
+                    String id = (String) session.getAttribute("LibrarianID");
+                    if(id == null){
+                %>
+                <li>
+                    <a href="${pageContext.request.contextPath}/login.jsp">Login</a>
+                </li>
+                <%
+                } else {
+                %>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=id%><strong class="caret"></strong></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/logout">Log out</a>
+                        </li>
+                    </ul>
+                </li>
+                <% } %>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

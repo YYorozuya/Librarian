@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/editbyid")
+@WebServlet("/editbyid")
 public class EditById extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -24,7 +24,7 @@ public class EditById extends HttpServlet {
 
         BookService.edit(id,name,author,category,price,floor,shelf,area);
 
-        request.getRequestDispatcher("editReturn.jsp").forward(request,response);
+        request.getRequestDispatcher("/librarian/editReturn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

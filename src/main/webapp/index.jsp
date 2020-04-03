@@ -47,7 +47,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <img class="image_1" src="${pageContext.request.contextPath}/resource/img/logo2.png" alt="logo" height="50px" width="100px">
+            <img class="image_1" src="${pageContext.request.contextPath}/img/logo2.png" alt="logo" height="50px" width="100px">
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -55,22 +55,42 @@
                 <li class="active home"><a href="${pageContext.request.contextPath}">Home</a></li>
                 <li class="dropdown home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
                     <ul class="dropdown-menu">
-                        <li class="home"><a href="bookList.jsp">BookList</a></li>
-                        <li class="home"><a href="addBook.jsp">AddBook</a></li>
-                        <li class="home"><a href="delBook.jsp">DeleteBook</a></li>
-                        <li class="home"><a href="editBook.jsp">EditBook</a></li>
+                        <li class="home"><a href="librarian/bookList.jsp">BookList</a></li>
+                        <li class="home"><a href="librarian/addBook.jsp">AddBook</a></li>
+                        <li class="home"><a href="librarian/delBook.jsp">DeleteBook</a></li>
+                        <li class="home"><a href="librarian/editBook.jsp">EditBook</a></li>
                     </ul>
                 </li>
-                <li class="home"><a href="addBook.jsp">Reader</a></li>
-                <li class="home"><a href="delBook.jsp">Records</a></li>
+                <li class="home"><a href="librarian/addBook.jsp">Reader</a></li>
+                <li class="home"><a href="librarian/delBook.jsp">Records</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <% //判断是否为登陆
+                    String id = (String) session.getAttribute("LibrarianID");
+                    if(id == null){
+                %>
+                <li>
+                    <a href="${pageContext.request.contextPath}/login.jsp">Login</a>
+                </li>
+                <%
+                    } else {
+                %>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=id%><strong class="caret"></strong></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/logout">Log out</a>
+                        </li>
+                    </ul>
+                </li>
+                <% } %>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
     </nav>
 
     <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
-            <h1 style="padding-left:20px;">Welcome to Mandarin-Library, Dear <strong>Librarian!</strong></h1>
-        <!--<p style="padding-left:450px;padding-top:50px;"><span style="color:#7615B8;font-size:15px;">If you want to know more,click here:</span><a class="btn btn-primary btn-lg" style="background-color:white;border:1px solid black;color:#7615B8;margin-left:20px;" href="#" role="button">Learn more</a></p>-->
+        <h1 style="padding-left:20px;">Welcome to Mandarin-Library, Dear <strong>Librarian!</strong></h1>
     </div>
 
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
@@ -84,10 +104,10 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="${pageContext.request.contextPath}/resource/img/pic1.jpg" alt=".." style="margin:auto;margin-top:0px;heiht:300px;width:100%;">
+            <img src="${pageContext.request.contextPath}/img/pic1.jpg" alt=".." style="margin:auto;margin-top:0px;heiht:300px;width:100%;">
         </div>
         <div class="item">
-            <img src="${pageContext.request.contextPath}/resource/img/pic2.jpg" alt=".." style="margin:auto;margin-top:0px;heiht:200px;">
+            <img src="${pageContext.request.contextPath}/img/pic2.jpg" alt=".." style="margin:auto;margin-top:0px;heiht:200px;">
         </div>
         <div class="rg_5">Copyright @Mandarin-Library</div>
     </div>

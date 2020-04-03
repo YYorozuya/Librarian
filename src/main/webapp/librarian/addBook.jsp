@@ -8,11 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AddBook</title>
 
+
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <style>
         body{
             background-color:#666666;
@@ -46,12 +47,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <img class="image_1" src="${pageContext.request.contextPath}/resource/img/logo2.png" alt="logo" height="50px" width="100px">
+            <img class="image_1" src="${pageContext.request.contextPath}/img/logo2.png" alt="logo" height="50px" width="100px">
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="home"><a href="${pageContext.request.contextPath}">Home</a></li>
+                <li class="home"><a href="${pageContext.request.contextPath}/">Home</a></li>
                 <li class="dropdown active home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
                     <ul class="dropdown-menu">
                         <li><a href="bookList.jsp">BookList</a></li>
@@ -63,13 +64,34 @@
                 <li class="home"><a href="addBook.jsp">Reader</a></li>
                 <li class="home"><a href="delBook.jsp">Records</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <% //判断是否为登陆
+                    String id = (String) session.getAttribute("LibrarianID");
+                    if(id == null){
+                %>
+                <li>
+                    <a href="${pageContext.request.contextPath}/login.jsp">Login</a>
+                </li>
+                <%
+                } else {
+                %>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=id%><strong class="caret"></strong></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/logout">Log out</a>
+                        </li>
+                    </ul>
+                </li>
+                <% } %>
+            </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
     <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
         <h1 style="font-size:40px;color:purple;text-align:center"><em>Add Books</em></h1>
     </div>
-    <div class="rg_area" style="background-color:white;margin:auto;height:900px;width:1000px;border:1px solid black;border-radius:3px;">
+    <div class="rg_area" style="background-color:white;margin:auto;width:70%;border:1px solid black;border-radius:3px;">
         <form style="padding-left:200px;padding-top:50px;padding-right:200px;"
           action="${pageContext.request.contextPath}/addbook" method="POST">
             <div><p style="font-size:20px;color:orange;">Please input the information of new books:</p></div>
