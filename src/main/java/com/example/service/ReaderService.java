@@ -9,9 +9,9 @@ import java.time.Instant;
 import java.util.List;
 
 public class ReaderService {
-    public static int register(String id, String passwd, String name, String email) {
+    public static int register(String id, String name, String email) {
         long now = Instant.now().getEpochSecond(); //获得当前以秒为单位的时间戳
-        Reader reader = new Reader(id,passwd,name,email,now,300);
+        Reader reader = new Reader(id,"12345678",name,email,now,300);
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         ReaderRepository rr = sqlSession.getMapper(ReaderRepository.class);
         int result = rr.insert(reader);

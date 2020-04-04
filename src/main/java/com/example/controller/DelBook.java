@@ -12,8 +12,9 @@ import java.io.IOException;
 public class DelBook extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String id = request.getParameter("id");
-        int result = BookService.delele(id);
+        String bkid = request.getParameter("id");
+        String libid = (String) request.getSession().getAttribute("LibrarianID");
+        int result = BookService.delete(bkid,libid);
         request.getRequestDispatcher("/librarian/delReturn.jsp").forward(request,response);
     }
 

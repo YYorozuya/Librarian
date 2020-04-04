@@ -1,10 +1,13 @@
 package com.example.service;
 
 import com.example.entity.Book;
+import com.example.entity.DelRecord;
 import com.example.repository.BookRepository;
+import com.example.repository.DelRecordRepository;
 import com.example.utils.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import java.text.DecimalFormat;
+import java.time.Instant;
 import java.util.List;
 
 public class BookService {
@@ -32,10 +35,13 @@ public class BookService {
         return after-before; //返回实际添加的书籍数目
     }
 
-    public static int delele(String id) {
+    public static int delete(String bkid, String libid) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BookRepository br = sqlSession.getMapper(BookRepository.class);
-        int result = br.delete(id);
+        int result = br.delete(bkid);
+        DelRecordRepository dr = sqlSession.getMapper(DelRecordRepository.class);
+        long now = Instant.now().getEpochSecond();
+        dr.insert(new DelRecord(0,bkid,libid,now));
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return result;

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ReaderServiceTest {
     @Test
     void test() {
-        ReaderService.register("46445","456666","sfg","asd");
+        ReaderService.register("46445","456666","sfg");
         //ReaderService.edit("465","hhh","666","da");
         //ReaderService.delete("465");
     }

@@ -21,6 +21,7 @@
         <mapper resource="com/example/repository/BRrecordMapper.xml"/>
         <mapper resource="com/example/repository/FineMapper.xml"/>
         <mapper resource="com/example/repository/NewsMapper.xml"/>
+        <mapper resource="com/example/repository/DelRecordMapper.xml"/>
     </mappers>
 
 </configuration>

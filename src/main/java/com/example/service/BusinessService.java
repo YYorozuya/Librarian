@@ -181,6 +181,7 @@ public class BusinessService {
         return result;
     }
 
+    //编辑公告
     public static int editNews(int id, String title, String content) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         NewsRepository nr = sqlSession.getMapper(NewsRepository.class);
