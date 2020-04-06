@@ -5,7 +5,7 @@
     <resultMap id="FineRecordMap" type="com.example.entity.FineRecord">
         <id column="id"/><!--如果不指定id，当其他所有列有相同的值时重复记录不会加入到结果集中-->
         <result column="time" property="time"/>
-        <association property="record" javaType="com.example.entity.BRrecord">
+        <association property="record" javaType="com.example.entity.LendReturnRecord">
             <id column="id" property="id"/>
             <result column="bkid" property="bkid" />
             <result column="rid" property="rid"/>

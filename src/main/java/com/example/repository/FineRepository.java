@@ -1,6 +1,5 @@
 package com.example.repository;
 
-import com.example.entity.BRrecord;
 import com.example.entity.FineRecord;
 import org.apache.ibatis.annotations.Param;
 

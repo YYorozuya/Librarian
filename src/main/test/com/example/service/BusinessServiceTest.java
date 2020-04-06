@@ -25,7 +25,7 @@ class BusinessServiceTest {
         //long l2 = Instant.now().getEpochSecond();
 
         //test = BusinessService.postNews("dadfsgfd","dsfdgfd");
-        test = BusinessService.editNews(1,"安抚","阿斯弗");
+        test = BusinessService.lend("97802419504250001","123");
         //test = BusinessService.deleteNews(0);
         System.out.println(test);
 
