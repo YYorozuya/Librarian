@@ -61,7 +61,14 @@
                         <li><a href="editBook.jsp">EditBook</a></li>
                     </ul>
                 </li>
-                <li class="home"><a href="addBook.jsp">Reader</a></li>
+                <li class="dropdown home"><a href="addBook.jsp">Reader</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="bookList.jsp">Register</a></li>
+                        <li><a href="addBook.jsp">Edit</a></li>
+                        <li><a href="delBook.jsp">Delete</a></li>
+                        <li><a href="editBook.jsp">History</a></li>
+                    </ul>
+                </li>
                 <li class="home"><a href="delBook.jsp">Records</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

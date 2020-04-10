@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.entity.FineRecord;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -35,6 +36,8 @@ class BusinessServiceTest {
         for (double f: list)
             System.out.println(f);*/
 
+
+        File file = new File("classpath:/");
         /*LocalDateTime now = LocalDateTime.now();
         LocalDateTime m = now.withDayOfMonth(1).withHour(0).withMinute(0).withSecond(0);
         LocalDateTime m1 = now.withMonth(1);

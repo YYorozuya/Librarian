@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 
 @WebServlet("/addbook")
@@ -26,6 +27,8 @@ public class AddBook extends HttpServlet {
         int added = BookService.add(isbn,name,author,category,price,floor,shelf,area,amount);
 
         request.setAttribute("num",added);
+
+
 
         request.getRequestDispatcher("/librarian/addReturn.jsp").forward(request,response);
     }
