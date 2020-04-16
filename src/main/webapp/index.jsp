@@ -11,10 +11,11 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
     <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <style>
+  <%--  <style>
         body{
             background-color:#666666;
         }
@@ -33,7 +34,7 @@
             color:grey;
             clear:both;
         }
-    </style>
+    </style>--%>
 
 </head>
 <body>
@@ -55,23 +56,23 @@
                 <li class="active home"><a href="${pageContext.request.contextPath}/">Home</a></li>
                 <li class="dropdown home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
                     <ul class="dropdown-menu">
-                        <li><a href="librarian/bookList.jsp">BookList</a></li>
-                        <li><a href="librarian/addBook.jsp">AddBook</a></li>
-                        <li><a href="librarian/delBook.jsp">DeleteBook</a></li>
-                        <li><a href="librarian/editBook.jsp">EditBook</a></li>
+                        <li><a href="Auth/bookList.jsp">BookList</a></li>
+                        <li><a href="Auth/addBook.jsp">AddBook</a></li>
+                        <li><a href="Auth/delBook.jsp">DeleteBook</a></li>
+                        <li><a href="Auth/editBook.jsp">EditBook</a></li>
                     </ul>
                 </li>
                 <li class="dropdown home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Reader</a>
                     <ul class="dropdown-menu">
-                        <li><a href="librarian/readerList.jsp">List</a></li>
-                        <li><a href="librarian/register.jsp">Register</a></li>
-                        <li><a href="librarian/editReader.jsp">Edit</a></li>
-                        <li><a href="librarian/delReader.jsp">Delete</a></li>
-                        <li><a href="librarian/history.jsp">History</a></li>
+                        <li><a href="Auth/readerList.jsp">List</a></li>
+                        <li><a href="Auth/register.jsp">Register</a></li>
+                        <li><a href="Auth/editReader.jsp">Edit</a></li>
+                        <li><a href="Auth/delReader.jsp">Delete</a></li>
+                        <li><a href="Auth/history.jsp">History</a></li>
                     </ul>
                 </li>
-                <li class="home"><a href="librarian/delBook.jsp">Business</a></li>
-                <li class="home"><a href="librarian/delBook.jsp">Records</a></li>
+                <li class="home"><a href="Auth/delBook.jsp">Business</a></li>
+                <li class="home"><a href="Auth/delBook.jsp">Records</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <% //判断是否为登陆

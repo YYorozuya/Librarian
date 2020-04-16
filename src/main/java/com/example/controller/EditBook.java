@@ -24,7 +24,7 @@ public class EditBook extends HttpServlet {
 
         BookService.editByIsbn(isbn,name,author,category,price,floor,shelf,area);
 
-        request.getRequestDispatcher("/librarian/editReturn.jsp").forward(request,response);
+        request.getRequestDispatcher("/Auth/editReturn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

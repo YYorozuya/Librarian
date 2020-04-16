@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter("/librarian/*")
+@WebFilter("/Auth/*")
 public class AuthFilter implements Filter {
     public void destroy() {
     }
@@ -20,7 +20,6 @@ public class AuthFilter implements Filter {
 
         if (request.getSession().getAttribute("LibrarianID") == null) {
             // 未登录，自动跳转到登录页:
-            System.out.println("AuthFilter: not signin!");
             response.sendRedirect("/login.jsp");
         } else {
             // 已登录，继续处理:

@@ -1,39 +1,20 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Register</title>
-
-
+    <title>AddBook</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
     <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-        body{
-            background-color:#666666;
-        }
-        .image_1{
-            padding-right:10px;
-        }
-        .home{
-            padding-right:20px;
-        }
-        .rg_5{
-            border:1px;
-            background-color: orange;
-            text-align: center;
-            height: 40px;
-            font-size: 15px;
-            color:grey;
-            clear:both;
-        }
-    </style>
-
 </head>
+
 <body>
     <nav class="navbar navbar-default" style="margin-bottom:0px;">
     <div class="container-fluid">
@@ -51,23 +32,22 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="home"><a href="${pageContext.request.contextPath}/">Home</a></li>
-                <li class="dropdown home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
+                <li class="dropdown active home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
                     <ul class="dropdown-menu">
                         <li><a href="bookList.jsp">BookList</a></li>
-                        <li><a href="addBook.jsp">AddBook</a></li>
+                        <li class="active"><a href="addBook.jsp">AddBook</a></li>
                         <li><a href="delBook.jsp">DeleteBook</a></li>
                         <li><a href="editBook.jsp">EditBook</a></li>
                     </ul>
                 </li>
-                <li class="dropdown active home"><a href="#">Reader</a>
+                <li class="dropdown home"><a href="addBook.jsp">Reader</a>
                     <ul class="dropdown-menu">
-                        <li class="active"><a href="register.jsp">Register</a></li>
-                        <li><a href="editReader.jsp">Edit</a></li>
-                        <li><a href="delReader.jsp">Delete</a></li>
-                        <li><a href="history.jsp">History</a></li>
+                        <li><a href="bookList.jsp">Register</a></li>
+                        <li><a href="addBook.jsp">Edit</a></li>
+                        <li><a href="delBook.jsp">Delete</a></li>
+                        <li><a href="editBook.jsp">History</a></li>
                     </ul>
                 </li>
-                <li class="home"><a href="delBook.jsp">Business</a></li>
                 <li class="home"><a href="delBook.jsp">Records</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -95,27 +75,55 @@
     </div><!-- /.container-fluid -->
 </nav>
     <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
-        <h1 style="font-size:40px;color:purple;text-align:center"><em>Reader Registry</em></h1>
+        <h1 style="font-size:40px;color:purple;text-align:center"><em>Add Books</em></h1>
     </div>
     <div class="rg_area" style="background-color:white;margin:auto;width:70%;border:1px solid black;border-radius:3px;">
         <form style="padding-left:200px;padding-top:50px;padding-right:200px;"
-              action="${pageContext.request.contextPath}/register" method="POST">
-            <div><p style="font-size:20px;color:orange;">Register an account with initial password.</p></div>
+          action="${pageContext.request.contextPath}/addbook" method="POST">
+            <div><p style="font-size:20px;color:orange;">Please input the information of new books:</p></div>
             <div class="form-group">
-                <label for="id">ID</label>
-                <input type="text" class="form-control" id="id" placeholder="Phone number" name="id">
+                <label for="InputBookISBN">ISBN</label>
+                <input type="text" class="form-control" id="InputBookISBN" placeholder="ISBN" name="isbn">
             </div>
             <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Name" name="name">
-            </div>
+            <label for="InputBookName">Name</label>
+            <input type="text" class="form-control" id="InputBookName" placeholder="Name" name="name">
+        </div>
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" placeholder="Email" name="email">
-            </div>
-            <button type="submit" class="btn btn-default">Register</button>
-        </form>
+            <label for="InputBookAuthor">Author</label>
+            <input type="text" class="form-control" id="InputBookAuthor" placeholder="Author" name="author">
+        </div>
+            <div class="form-group">
+            <label for="InputBookCategory">Category</label>
+            <input type="text" class="form-control" id="InputBookCategory" placeholder="Category" name="category">
+        </div>
+            <div class="form-group">
+            <label for="InputBookPrice">Price</label>
+            <input type="text" class="form-control" id="InputBookPrice" placeholder="Price" name="price">
+        </div>
+            <div class="form-group">
+            <label for="InputBookFloor">Floor</label>
+            <input type="text" class="form-control" id="InputBookFloor" placeholder="Floor" name="floor">
+        </div>
+            <div class="form-group">
+            <label for="InputBookShelf">Shelf</label>
+            <input type="text" class="form-control" id="InputBookShelf" placeholder="Shelf" name="shelf">
+        </div>
+            <div class="form-group">
+            <label for="InputBookArea">Area</label>
+            <input type="text" class="form-control" id="InputBookArea" placeholder="Area" name="area">
+        </div>
+            <div class="form-group">
+            <label for="InputBookAmount">Amount</label>
+            <input type="text" class="form-control" id="InputBookAmount" placeholder="Amount" name="amount">
+        </div>
+            <button type="submit" class="btn btn-default">Add</button>
+    </form>
     </div>
     <div class="rg_5">Copyright @Mandarin-Library</div>
+
+<!-- Controls -->
+
+
 </body>
 </html>

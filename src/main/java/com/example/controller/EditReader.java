@@ -20,7 +20,7 @@ public class EditReader extends HttpServlet {
 
         int result = ReaderService.edit(id,name,passwd,email);
 
-        request.getRequestDispatcher("/librarian/editReaderReturn.jsp").forward(request,response);
+        request.getRequestDispatcher("/Auth/editReaderReturn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

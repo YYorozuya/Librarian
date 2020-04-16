@@ -26,11 +26,11 @@ public class AddBook extends HttpServlet {
 
         int added = BookService.add(isbn,name,author,category,price,floor,shelf,area,amount);
 
-        request.setAttribute("num",added);
+        request.setAttribute("addedNum",added);
 
 
 
-        request.getRequestDispatcher("/librarian/addReturn.jsp").forward(request,response);
+        request.getRequestDispatcher("/Auth/addReturn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

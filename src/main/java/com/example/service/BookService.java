@@ -5,7 +5,10 @@ import com.example.entity.DelRecord;
 import com.example.repository.BookRepository;
 import com.example.repository.DelRecordRepository;
 import com.example.utils.MyBatisUtil;
+import com.google.zxing.WriterException;
 import org.apache.ibatis.session.SqlSession;
+
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.time.Instant;
 import java.util.List;
@@ -92,5 +95,13 @@ public class BookService {
         return result;
     }
 
+    public static List<Book> addedList(String isbn, int amount) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        BookRepository br = sqlSession.getMapper(BookRepository.class);
+        List<Book> list = br.findNew(isbn,amount);
+        sqlSession.commit();
+        MyBatisUtil.closeSqlSession(sqlSession);
+        return list;
+    }
 
 }

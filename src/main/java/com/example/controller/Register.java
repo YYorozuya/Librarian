@@ -19,7 +19,7 @@ public class Register extends HttpServlet {
 
         int result = ReaderService.register(id,name,email);
 
-        request.getRequestDispatcher("/librarian/registerReturn.jsp").forward(request,response);
+        request.getRequestDispatcher("/Auth/registerReturn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

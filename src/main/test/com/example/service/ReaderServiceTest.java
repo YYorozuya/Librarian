@@ -1,16 +1,17 @@
 package com.example.service;
 
-import com.example.entity.Reader;
+import com.google.zxing.WriterException;
 import org.junit.jupiter.api.Test;
-import java.util.List;
+
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ReaderServiceTest {
     @Test
-    void test() {
-        ReaderService.register("46445","456666","sfg");
-        //ReaderService.edit("465","hhh","666","da");
-        //ReaderService.delete("465");
+    void test() throws IOException, WriterException {
+        String a = Class.class.getResource("/").getPath().replaceFirst("/", "").replaceAll("test-classes/", "");
+        System.out.println(a);
     }
+
 }

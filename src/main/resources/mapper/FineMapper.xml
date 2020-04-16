@@ -4,6 +4,7 @@
 <mapper namespace="com.example.repository.FineRepository">
     <resultMap id="FineRecordMap" type="com.example.entity.FineRecord">
         <id column="id"/><!--如果不指定id，当其他所有列有相同的值时重复记录不会加入到结果集中-->
+        <result column="amount" property="amount"/>
         <result column="time" property="time"/>
         <association property="record" javaType="com.example.entity.LendReturnRecord">
             <id column="id" property="id"/>
@@ -20,7 +21,7 @@
         UPDATE fine SET amount = #{amount}, time = #{time} WHERE id = #{id}
     </update>
     <select id="findAll" resultMap="FineRecordMap">
-        SELECT f.id, bkid, rid, btime, rtime, time
+        SELECT f.id, bkid, rid, btime, rtime, amount, time
             FROM fine f, br_record b WHERE f.id = b.id
     </select>
     <select id="sumBy" parameterType="long" resultType="java.lang.Double">

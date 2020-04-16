@@ -21,6 +21,9 @@
     <select id="findByIsbn" parameterType="java.lang.String" resultType="com.example.entity.Book">
         SELECT * FROM book WHERE id LIKE CONCAT(#{isbn},'%')
     </select>
+    <select id="findNew" resultType="com.example.entity.Book">
+        SELECT * FROM book WHERE id LIKE CONCAT(#{isbn},'%') ORDER BY id DESC LIMIT #{amount}
+    </select>
     <select id="findAll" resultType="com.example.entity.Book">
         SELECT * FROM book
     </select>

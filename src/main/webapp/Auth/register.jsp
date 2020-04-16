@@ -1,35 +1,17 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>EditReader</title>
+    <title>Register</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
     <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <style>
-        body{
-            background-color:#666666;
-        }
-        .image_1{
-            padding-right:10px;
-        }
-        .home{
-            padding-right:20px;
-        }
-        .rg_5{
-            border:1px;
-            background-color: orange;
-            text-align: center;
-            height: 40px;
-            font-size: 15px;
-            color:grey;
-            clear:both;
-        }
-    </style>
 
 </head>
 <body>
@@ -48,7 +30,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active home"><a href="${pageContext.request.contextPath}/">Home</a></li>
+                <li class="home"><a href="${pageContext.request.contextPath}/">Home</a></li>
                 <li class="dropdown home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
                     <ul class="dropdown-menu">
                         <li><a href="bookList.jsp">BookList</a></li>
@@ -57,9 +39,9 @@
                         <li><a href="editBook.jsp">EditBook</a></li>
                     </ul>
                 </li>
-                <li class="dropdown home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Reader</a>
+                <li class="dropdown active home"><a href="#">Reader</a>
                     <ul class="dropdown-menu">
-                        <li><a href="register.jsp">Register</a></li>
+                        <li class="active"><a href="register.jsp">Register</a></li>
                         <li><a href="editReader.jsp">Edit</a></li>
                         <li><a href="delReader.jsp">Delete</a></li>
                         <li><a href="history.jsp">History</a></li>
@@ -93,32 +75,27 @@
     </div><!-- /.container-fluid -->
 </nav>
     <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
-        <h1 style="font-size:40px;color:purple;text-align:center"><em>Edit Reader</em></h1>
+        <h1 style="font-size:40px;color:purple;text-align:center"><em>Reader Registry</em></h1>
     </div>
-    <div class="rg_area" style="background-color:white;margin:auto;height:70%;width:1000px;border:1px solid black;border-radius:3px;">
-    <form style="padding-left:200px;padding-top:50px;padding-right:200px;"
-          action="${pageContext.request.contextPath}/editreader" method="POST">
-        <div><p style="font-size:20px;color:orange;">Edit reader account by reader ID</p></div>
-        <div class="form-group">
-            <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" placeholder="ID" name="id">
-        </div>
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name" name="name">
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" class="form-control" id="email" placeholder="Email" name="email">
-        </div>
-        <div class="form-group">
-            <label for="passwd">Password</label>
-            <input type="text" class="form-control" id="passwd" placeholder="Password" name="passwd">
-        </div>
-        <button type="submit" class="btn btn-default">Edit</button>
-    </form>
-</div>
+    <div class="rg_area" style="background-color:white;margin:auto;width:70%;border:1px solid black;border-radius:3px;">
+        <form style="padding-left:200px;padding-top:50px;padding-right:200px;"
+              action="${pageContext.request.contextPath}/register" method="POST">
+            <div><p style="font-size:20px;color:orange;">Register an account with initial password.</p></div>
+            <div class="form-group">
+                <label for="id">ID</label>
+                <input type="text" class="form-control" id="id" placeholder="Phone number" name="id">
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" placeholder="Email" name="email">
+            </div>
+            <button type="submit" class="btn btn-default">Register</button>
+        </form>
+    </div>
     <div class="rg_5">Copyright @Mandarin-Library</div>
 </body>
-
 </html>

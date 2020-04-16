@@ -15,7 +15,7 @@ public class DelBook extends HttpServlet {
         String bkid = request.getParameter("id");
         String libid = (String) request.getSession().getAttribute("LibrarianID");
         int result = BookService.delete(bkid,libid);
-        request.getRequestDispatcher("/librarian/delReturn.jsp").forward(request,response);
+        request.getRequestDispatcher("/Auth/delReturn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

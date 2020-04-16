@@ -37,7 +37,6 @@ class BusinessServiceTest {
             System.out.println(f);*/
 
 
-        File file = new File("classpath:/");
         /*LocalDateTime now = LocalDateTime.now();
         LocalDateTime m = now.withDayOfMonth(1).withHour(0).withMinute(0).withSecond(0);
         LocalDateTime m1 = now.withMonth(1);

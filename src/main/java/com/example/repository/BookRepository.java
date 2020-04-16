@@ -14,6 +14,7 @@ public interface BookRepository {
     int delete(String id);
     List<Book> findAll();
     List<Book> findByIsbn(String isbn);
+    List<Book> findNew(@Param("isbn")String isbn, @Param("amount")int amount);
     Book findById(String id);
     String maxId(String isbn);
 

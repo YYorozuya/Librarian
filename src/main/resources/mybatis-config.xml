@@ -8,20 +8,20 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/library?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;allowPublicKeyRetrieval=true"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/library?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8"/>
                 <property name="username" value="root"/>
                 <property name="password" value="7890-="/>
             </dataSource>
         </environment>
     </environments>
 
-    <mappers>
-        <mapper resource="com/example/repository/BookMapper.xml"/>
-        <mapper resource="com/example/repository/ReaderMapper.xml"/>
-        <mapper resource="com/example/repository/LendReturnMapper.xml"/>
-        <mapper resource="com/example/repository/FineMapper.xml"/>
-        <mapper resource="com/example/repository/NewsMapper.xml"/>
-        <mapper resource="com/example/repository/DelRecordMapper.xml"/>
+    <mappers> <!--classpath的相对资源-->
+        <mapper resource="mapper/BookMapper.xml"/>
+        <mapper resource="mapper/ReaderMapper.xml"/>
+        <mapper resource="mapper/LendReturnMapper.xml"/>
+        <mapper resource="mapper/FineMapper.xml"/>
+        <mapper resource="mapper/NewsMapper.xml"/>
+        <mapper resource="mapper/DelRecordMapper.xml"/>
     </mappers>
 
 </configuration>
