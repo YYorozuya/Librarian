@@ -1,6 +1,6 @@
 package com.example.repository;
 
-import com.example.entity.News;
+import com.example.domain.News;
 import java.util.List;
 
 public interface NewsRepository {

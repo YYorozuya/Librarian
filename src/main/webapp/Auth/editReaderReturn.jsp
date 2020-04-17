@@ -1,4 +1,4 @@
-<%@ page import="com.example.entity.Reader" %>
+<%@ page import="com.example.domain.Reader" %>
 <%@ page import="com.example.service.ReaderService" %>
 <html>
 <head>

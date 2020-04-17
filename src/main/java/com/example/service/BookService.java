@@ -1,14 +1,12 @@
 package com.example.service;
 
-import com.example.entity.Book;
-import com.example.entity.DelRecord;
+import com.example.domain.Book;
+import com.example.domain.DelRecord;
 import com.example.repository.BookRepository;
 import com.example.repository.DelRecordRepository;
 import com.example.utils.MyBatisUtil;
-import com.google.zxing.WriterException;
 import org.apache.ibatis.session.SqlSession;
 
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.time.Instant;
 import java.util.List;
@@ -18,7 +16,7 @@ public class BookService {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BookRepository br = sqlSession.getMapper(BookRepository.class);
         String maxId = br.maxId(isbn);
-        Integer before; //获取添加之前该isbn书籍的最大编号
+        int before; //获取添加之前该isbn书籍的最大编号
         if(maxId == null)
             before = 0;
         else
@@ -29,10 +27,11 @@ public class BookService {
         for (int i = 0; i < amount; i++) {
             String id = isbn + df.format(++current);
             Book book = new Book(id,name,author,category,price,floor,shelf,area,0);
+            System.out.println(book);
             br.insert(book);
         }
         String maxId2 = br.maxId(isbn);
-        Integer after = Integer.parseInt(maxId2.substring(maxId2.length()-4));//获取添加之后该isbn书籍的最大编号
+        int after = Integer.parseInt(maxId2.substring(maxId2.length()-4));//获取添加之后该isbn书籍的最大编号
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return after-before; //返回实际添加的书籍数目
@@ -68,6 +67,15 @@ public class BookService {
         return list;
     }
 
+    public static List<Book> findFuzzy(String name, String author, String category) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        BookRepository br = sqlSession.getMapper(BookRepository.class);
+        List<Book> list = br.findFuzzy(name, author, category);
+        sqlSession.commit();
+        MyBatisUtil.closeSqlSession(sqlSession);
+        return list;
+    }
+
     public static List<Book> bookList() {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BookRepository br = sqlSession.getMapper(BookRepository.class);
@@ -77,7 +85,7 @@ public class BookService {
         return list;
     }
 
-    public static int edit(String id, String name, String author, String category, double price, int floor, int shelf, int area) {
+    public static int edit(String id, String name, String author, String category, Double price, Integer floor, Integer shelf, Integer area) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BookRepository br = sqlSession.getMapper(BookRepository.class);
         int result = br.edit(new Book(id,name,author,category,price,floor,shelf,area,0));
@@ -86,7 +94,7 @@ public class BookService {
         return result;
     }
 
-    public static int editByIsbn(String isbn, String name, String author, String category, double price, int floor, int shelf, int area) {
+    public static int editByIsbn(String isbn, String name, String author, String category, Double price, Integer floor, Integer shelf, Integer area) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BookRepository br = sqlSession.getMapper(BookRepository.class);
         int result = br.editByIsbn(isbn,name,author,category,price,floor,shelf,area);

@@ -1,6 +1,6 @@
 package com.example.repository;
 
-import com.example.entity.DelRecord;
+import com.example.domain.DelRecord;
 
 import java.util.List;
 

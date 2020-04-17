@@ -2,10 +2,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.repository.DelRecordRepository">
-    <insert id="insert" parameterType="com.example.entity.DelRecord">
+    <insert id="insert" parameterType="com.example.domain.DelRecord">
         INSERT INTO del_record (id,bkid,libid,time) VALUES (#{id},#{bkid},#{libid},#{time})
     </insert>
-    <select id="findAll" resultType="com.example.entity.News">
+    <select id="findAll" resultType="com.example.domain.News">
         SELECT * FROM del_record
     </select>
 </mapper>

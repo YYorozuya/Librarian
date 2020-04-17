@@ -1,8 +1,8 @@
 package com.example.service;
 
-import com.example.entity.LendReturnRecord;
-import com.example.entity.FineRecord;
-import com.example.entity.News;
+import com.example.domain.LendReturnRecord;
+import com.example.domain.FineRecord;
+import com.example.domain.News;
 import com.example.repository.LendReturnRepository;
 import com.example.repository.FineRepository;
 import com.example.repository.NewsRepository;

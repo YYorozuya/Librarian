@@ -2,11 +2,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.repository.FineRepository">
-    <resultMap id="FineRecordMap" type="com.example.entity.FineRecord">
+    <resultMap id="FineRecordMap" type="com.example.domain.FineRecord">
         <id column="id"/><!--如果不指定id，当其他所有列有相同的值时重复记录不会加入到结果集中-->
         <result column="amount" property="amount"/>
         <result column="time" property="time"/>
-        <association property="record" javaType="com.example.entity.LendReturnRecord">
+        <association property="record" javaType="com.example.domain.LendReturnRecord">
             <id column="id" property="id"/>
             <result column="bkid" property="bkid" />
             <result column="rid" property="rid"/>

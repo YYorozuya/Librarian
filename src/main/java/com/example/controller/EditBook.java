@@ -17,10 +17,22 @@ public class EditBook extends HttpServlet {
         String name = request.getParameter("name");
         String author = request.getParameter("author");
         String category = request.getParameter("category");
-        double price = Double.parseDouble(request.getParameter("price"));
-        int floor = Integer.parseInt(request.getParameter("floor"));
-        int shelf = Integer.parseInt(request.getParameter("shelf"));
-        int area = Integer.parseInt(request.getParameter("area"));
+        String pricestr = request.getParameter("price");
+        String floorstr = request.getParameter("floor");
+        String shelfstr = request.getParameter("shelf");
+        String areastr = request.getParameter("area");
+        Double price = null;
+        Integer floor = null;
+        Integer shelf = null;
+        Integer area = null;
+        if (pricestr.length()!=0)
+            price = Double.parseDouble(pricestr);
+        if (floorstr.length()!=0)
+            floor = Integer.parseInt(floorstr);
+        if (shelfstr.length()!=0)
+            shelf = Integer.parseInt(shelfstr);
+        if (areastr.length()!=0)
+            area = Integer.parseInt(areastr);
 
         BookService.editByIsbn(isbn,name,author,category,price,floor,shelf,area);
 

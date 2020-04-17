@@ -1,6 +1,6 @@
 package com.example.repository;
 
-import com.example.entity.Reader;
+import com.example.domain.Reader;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -18,17 +18,30 @@ public class AddBook extends HttpServlet {
         String name = request.getParameter("name");
         String author = request.getParameter("author");
         String category = request.getParameter("category");
-        double price = Double.parseDouble(request.getParameter("price"));
-        int floor = Integer.parseInt(request.getParameter("floor"));
-        int shelf = Integer.parseInt(request.getParameter("shelf"));
-        int area = Integer.parseInt(request.getParameter("area"));
-        int amount = Integer.parseInt(request.getParameter("amount"));
+        String pricestr = request.getParameter("price");
+        String floorstr = request.getParameter("floor");
+        String shelfstr = request.getParameter("shelf");
+        String areastr = request.getParameter("area");
+        String amountstr = request.getParameter("amount");
+        double price = 0;
+        int floor = 0;
+        int shelf = 0;
+        int area = 0;
+        int amount = 0;
+        if (pricestr.length()!=0)
+            price = Double.parseDouble(pricestr);
+        if (floorstr.length()!=0)
+            floor = Integer.parseInt(floorstr);
+        if (shelfstr.length()!=0)
+            shelf = Integer.parseInt(shelfstr);
+        if (areastr.length()!=0)
+            area = Integer.parseInt(areastr);
+        if (amountstr.length()!=0)
+            amount = Integer.parseInt(amountstr);
 
         int added = BookService.add(isbn,name,author,category,price,floor,shelf,area,amount);
 
         request.setAttribute("addedNum",added);
-
-
 
         request.getRequestDispatcher("/Auth/addReturn.jsp").forward(request,response);
     }

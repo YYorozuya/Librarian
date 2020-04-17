@@ -3,34 +3,51 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.repository.BookRepository">
-    <insert id="insert" parameterType="com.example.entity.Book">
+    <insert id="insert" parameterType="com.example.domain.Book">
         INSERT INTO book (id,name,author,category,price,floor,shelf,area,reserved)
             VALUES (#{id},#{name},#{author},#{category},#{price},#{floor},#{shelf},#{area},#{reserved})
     </insert>
     <delete id="delete" parameterType="java.lang.String">
         DELETE FROM book WHERE id = #{id}
     </delete>
-    <update id="edit" parameterType="com.example.entity.Book">
+    <update id="edit" parameterType="com.example.domain.Book">
         UPDATE book SET name = #{name}, author = #{author}, category = #{category}, price = #{price}, floor = #{floor}, shelf = #{shelf}, area = #{area}
             WHERE id = #{id}
     </update>
     <update id="editByIsbn">
-          UPDATE book SET name = #{name}, author = #{author}, category = #{category}, price = #{price}, floor = #{floor}, shelf = #{shelf}, area = #{area}
-            WHERE id LIKE CONCAT(#{isbn},'%')
+        UPDATE book
+        <set>
+            <if test="name.length()!=0">name = #{name},</if>
+            <if test="author.length()!=0">author = #{author},</if>
+            <if test="category.length()!=0">category = #{category},</if>
+            <if test="price!=null">price = #{price},</if>
+            <if test="floor!=null">floor = #{floor},</if>
+            <if test="shelf!=null">shelf = #{shelf},</if>
+            <if test="shelf!=null">area = #{area}</if>
+        </set>
+        WHERE LOCATE(#{isbn}, id) = 1
     </update>
-    <select id="findByIsbn" parameterType="java.lang.String" resultType="com.example.entity.Book">
-        SELECT * FROM book WHERE id LIKE CONCAT(#{isbn},'%')
+    <select id="findByIsbn" parameterType="java.lang.String" resultType="com.example.domain.Book">
+        SELECT * FROM book WHERE LOCATE(#{isbn}, id) = 1 /*isbn在id中首次出现的位置为1*/
     </select>
-    <select id="findNew" resultType="com.example.entity.Book">
-        SELECT * FROM book WHERE id LIKE CONCAT(#{isbn},'%') ORDER BY id DESC LIMIT #{amount}
+    <select id="findByName" parameterType="java.lang.String" resultType="com.example.domain.Book">
+        SELECT * FROM book WHERE LOCATE(#{name}, name) > 0
     </select>
-    <select id="findAll" resultType="com.example.entity.Book">
+    <select id="findFuzzy" resultType="com.example.domain.Book">
+        SELECT * FROM book
+        <where>
+            <if test="name.length()!=0">LOCATE(#{name}, name) > 0</if>
+            <if test="author.length()!=0">AND LOCATE(#{author}, author) > 0</if>
+            <if test="category.length()!=0">AND #{category} = category</if>
+        </where>
+    </select>
+    <select id="findNew" resultType="com.example.domain.Book">
+        SELECT * FROM book WHERE LOCATE(#{isbn}, id) = 1 ORDER BY id DESC LIMIT #{amount}
+    </select>
+    <select id="findAll" resultType="com.example.domain.Book">
         SELECT * FROM book
     </select>
-    <select id="findById" parameterType="java.lang.String" resultType="com.example.entity.Book">
-        SELECT * FROM book WHERE id = #{id}
-    </select>
     <select id="maxId" parameterType="java.lang.String" resultType="java.lang.String">
-        SELECT MAX(id) FROM book WHERE id LIKE CONCAT(#{isbn},'%')
+        SELECT MAX(id) FROM book WHERE LOCATE(#{isbn}, id) = 1
     </select>
 </mapper>

@@ -2,16 +2,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.repository.NewsRepository">
-    <insert id="insert" parameterType="com.example.entity.News">
+    <insert id="insert" parameterType="com.example.domain.News">
         INSERT INTO news (id,title,content,time) VALUES (#{id},#{title},#{content},#{time})
     </insert>
     <delete id="delete" parameterType="int">
         DELETE FROM news WHERE id = #{id}
     </delete>
-    <update id="edit" parameterType="com.example.entity.News">
+    <update id="edit" parameterType="com.example.domain.News">
         UPDATE news SET title = #{title}, content = #{content} WHERE id = #{id}
     </update>
-    <select id="findAll" resultType="com.example.entity.News">
+    <select id="findAll" resultType="com.example.domain.News">
         SELECT * FROM news
     </select>
 </mapper>

@@ -1,5 +1,5 @@
 <%@ page import="com.example.service.BookService" %>
-<%@ page import="com.example.entity.Book" %>
+<%@ page import="com.example.domain.Book" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 

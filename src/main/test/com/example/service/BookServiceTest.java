@@ -1,11 +1,9 @@
 package com.example.service;
 
-import com.example.entity.Book;
+import com.example.domain.Book;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class BookServiceTest {
 
@@ -20,7 +18,7 @@ class BookServiceTest {
         BookService.add("9787538692990","The Art of War","Sun Tzu","Philosophy",46.00,2,1,1,3);*/
         //BookService.edit("97875386929900003","dddd","xxxx","ssss",9999.99,99,99,99);
         //BookService.delele("97875386929900003");
-        List<Book> list = BookService.addedList("9787538692990",3);
+        List<Book> list = BookService.findFuzzy("Le","thomas","novel");
         for (Book book:list)
             System.out.println(book);
     }

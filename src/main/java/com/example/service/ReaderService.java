@@ -1,6 +1,6 @@
 package com.example.service;
 
-import com.example.entity.Reader;
+import com.example.domain.Reader;
 import com.example.repository.ReaderRepository;
 import com.example.utils.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;

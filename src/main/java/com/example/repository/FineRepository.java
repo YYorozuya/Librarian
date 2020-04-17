@@ -1,6 +1,6 @@
 package com.example.repository;
 
-import com.example.entity.FineRecord;
+import com.example.domain.FineRecord;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

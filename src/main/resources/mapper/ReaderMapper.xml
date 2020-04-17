@@ -3,20 +3,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.repository.ReaderRepository">
-    <insert id="insert" parameterType="com.example.entity.Reader">
+    <insert id="insert" parameterType="com.example.domain.Reader">
         INSERT INTO reader (id, passwd, name, email, ctime, deposit)
             VALUES (#{id}, #{passwd}, #{name}, #{email}, #{ctime}, #{deposit})
     </insert>
-    <update id="edit" parameterType="com.example.entity.Reader">
+    <update id="edit" parameterType="com.example.domain.Reader">
         UPDATE reader SET passwd = #{passwd}, name = #{name}, email = #{email} WHERE id = #{id}
     </update>
     <delete id="delete" parameterType="java.lang.String">
         DELETE FROM reader WHERE id = #{id}
     </delete>
-    <select id="findAll" resultType="com.example.entity.Reader">
+    <select id="findAll" resultType="com.example.domain.Reader">
         SELECT * FROM reader
     </select>
-    <select id="findById" parameterType="java.lang.String" resultType="com.example.entity.Reader">
+    <select id="findById" parameterType="java.lang.String" resultType="com.example.domain.Reader">
         SELECT * FROM reader WHERE id = #{id}
     </select>
     <select id="sumBy" parameterType="long" resultType="java.lang.Double">

@@ -1,13 +1,8 @@
 package com.example.repository;
 
-import com.example.entity.Book;
-import com.example.utils.MyBatisUtil;
-import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Test;
 
 import java.text.DecimalFormat;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class BookRepositoryTest {
     @Test

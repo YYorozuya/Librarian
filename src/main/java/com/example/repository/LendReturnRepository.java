@@ -1,6 +1,6 @@
 package com.example.repository;
 
-import com.example.entity.LendReturnRecord;
+import com.example.domain.LendReturnRecord;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
