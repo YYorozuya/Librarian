@@ -60,6 +60,7 @@
                         <li><a href="Auth/addBook.jsp">AddBook</a></li>
                         <li><a href="Auth/delBook.jsp">DeleteBook</a></li>
                         <li><a href="Auth/editBook.jsp">EditBook</a></li>
+                        <li><a href="Auth/searchBook.jsp">searchBook</a></li>
                     </ul>
                 </li>
                 <li class="dropdown home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Reader</a>
@@ -71,7 +72,14 @@
                         <li><a href="Auth/history.jsp">History</a></li>
                     </ul>
                 </li>
-                <li class="home"><a href="Auth/delBook.jsp">Business</a></li>
+                <li class="dropdown home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Business</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="Auth/lendBook.jsp">Lend</a></li>
+                        <li><a href="Auth/returnBook.jsp">Return</a></li>
+                        <li><a href="Auth/editReader.jsp">Pay Fine</a></li>
+                        <li><a href="Auth/history.jsp">History</a></li>
+                    </ul>
+                </li>
                 <li class="home"><a href="Auth/delBook.jsp">Records</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

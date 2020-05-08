@@ -4,6 +4,7 @@ import com.example.domain.Book;
 import com.example.domain.DelRecord;
 import com.example.repository.BookRepository;
 import com.example.repository.DelRecordRepository;
+import com.example.repository.LendReturnRepository;
 import com.example.utils.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
@@ -27,7 +28,6 @@ public class BookService {
         for (int i = 0; i < amount; i++) {
             String id = isbn + df.format(++current);
             Book book = new Book(id,name,author,category,price,floor,shelf,area,0);
-            System.out.println(book);
             br.insert(book);
         }
         String maxId2 = br.maxId(isbn);
@@ -40,10 +40,17 @@ public class BookService {
     public static int delete(String bkid, String libid) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BookRepository br = sqlSession.getMapper(BookRepository.class);
-        int result = br.delete(bkid);
-        DelRecordRepository dr = sqlSession.getMapper(DelRecordRepository.class);
-        long now = Instant.now().getEpochSecond();
-        dr.insert(new DelRecord(0,bkid,libid,now));
+        LendReturnRepository lrr = sqlSession.getMapper(LendReturnRepository.class);
+        int result;
+        Long lent = lrr.isLent(bkid); //检查该书是否已被借走
+        if (lent == null || lent != 0) { //未被借走
+            result = br.delete(bkid);
+            DelRecordRepository dr = sqlSession.getMapper(DelRecordRepository.class);
+            long now = Instant.now().getEpochSecond();
+            dr.insert(new DelRecord(0, bkid, libid, now));
+        }
+        else
+            result = 0;
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return result;

@@ -1,11 +1,10 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DeleteBook</title>
+    <title>ReturnBook</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,7 +13,7 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-default" style="margin-bottom:0px;">
+<nav class="navbar navbar-default" style="margin-bottom:0px;">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -65,21 +64,24 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-    <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
-        <h1 style="font-size:40px;color:purple;text-align:center"><em>Delete Book</em></h1>
-    </div>
-    <div class="rg_area" style="background-color:white;margin:auto;width:1000px;border:1px solid black;border-radius:3px;">
-        <%
-            String words;
-            if((int)request.getAttribute("result") == 1)
-                words = "Succeed.";
-            else
-                words = "The book was lent. Delete it after it is returned.";
-        %>
-        <div><p style="font-size:30px;color:orange;"><%=words%></p></div>
-    </div>
+<div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
+    <h1 style="font-size:40px;color:purple;text-align:center"><em>Return Book</em></h1>
+</div>
+<div class="rg_area" style="background-color:white;margin:auto;width:1000px;border:1px solid black;border-radius:3px;">
+    <%
+        int result = (int)request.getAttribute("result");
+        String words;
+        if (result == 1)
+            words = "Succeed.";
+        else if (result == 2)
+            words = "The book is overdue. Need to pay the fine.";
+        else
+            words = "No such book to return.";
+    %>
+    <div><p style="font-size:30px;color:orange;"><%=words%></p></div>
+</div>
 
-    <div class="rg_5">Copyright @Mandarin-Library</div>
+<div class="rg_5">Copyright @Mandarin-Library</div>
 
 
 </body>

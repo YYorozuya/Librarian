@@ -31,7 +31,7 @@ public class BusinessService {
             int borrowNum = lrr.getBNum(rid); //检查读者是否借满三本书
             if (borrowNum < 3) {
                 Long lent = lrr.isLent(bkid); //检查该书是否已被借走
-                if (lent == null || lent != 0) {
+                if (lent == null || lent != 0) { //未被借走
                     long now = Instant.now().getEpochSecond(); //获得当前以秒为单位的时间戳
                     LendReturnRecord record = new LendReturnRecord(0,bkid,rid,now,0);
                     result = lrr.lend(record);
@@ -49,24 +49,25 @@ public class BusinessService {
 
     /**
      * @param id 需要归还的记录id
-     * @return 1：还书成功  0：失败
+     * @return 1：还书成功  2：还书成功但逾期
      */
-    public static int returN(int id) {
+    public static int reTurn(int id) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
-        LendReturnRepository brr = sqlSession.getMapper(LendReturnRepository.class);
+        LendReturnRepository lrr = sqlSession.getMapper(LendReturnRepository.class);
         Instant now = Instant.now();
         long nowLong = now.getEpochSecond();//获得当前以秒为单位的时间戳
         LocalDateTime nowTime = LocalDateTime.ofInstant(now, ZoneId.systemDefault());
         LocalDateTime pastTime = nowTime.minusDays(90);
         long pastLong = pastTime.atZone(ZoneId.systemDefault()).toEpochSecond();//获得90天前以秒为单位的时间戳
 
-        long borrowTime = brr.getBTime(id);
-        if (borrowTime < pastLong) { //超过90天加入罚款记录
+        int result = lrr.reTurn(id,nowLong);
+        Long borrowTime = lrr.getBTime(id);
+        if (borrowTime != null && borrowTime < pastLong) { //超过90天加入罚款记录
             FineRepository fr = sqlSession.getMapper(FineRepository.class);
             fr.insert(id,1);
+            result++;
         }
 
-        int result = brr.returN(id,nowLong);
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return result;

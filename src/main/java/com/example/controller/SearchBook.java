@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.service.BookService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,15 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/delbook")
-public class DelBook extends HttpServlet {
+@WebServlet("/searchbook")
+public class SearchBook extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String bkid = request.getParameter("id");
-        String libid = (String) request.getSession().getAttribute("LibrarianID");
-        int result = BookService.delete(bkid,libid);
-        request.setAttribute("result", result);
-        request.getRequestDispatcher("/Auth/delReturn.jsp").forward(request,response);
+        request.getRequestDispatcher("/Auth/searchReturn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
