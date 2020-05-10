@@ -77,7 +77,7 @@
     <h1 style="font-size:40px; color:purple; text-align:center"><em>Book List</em></h1>
 </div>
 <div class="rg_area" style="background-color:white;margin:auto;width:70%;border:1px solid black;border-radius:3px;">
-    <table class="table table-striped" style="width:95%;margin:auto">
+    <table class="table table-striped" style="width:95%;margin:auto;margin-bottom:10%">
         <thead>
         <tr>
             <th>Id</th>

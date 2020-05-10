@@ -67,7 +67,7 @@
 <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
     <h1 style="font-size:40px;color:purple;text-align:center"><em>Lend Book</em></h1>
 </div>
-<div class="rg_area" style="background-color:white;margin:auto;width:1000px;border:1px solid black;border-radius:3px;">
+<div class="rg_area" style="background-color:white;margin:auto;width:1000px;height:60%;border:1px solid black;border-radius:3px;">
     <div><p style="font-size:30px;color:orange;"><%=(String)request.getAttribute("result")%></p></div>
 </div>
 

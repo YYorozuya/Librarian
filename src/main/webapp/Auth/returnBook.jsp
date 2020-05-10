@@ -82,7 +82,7 @@
         <div><p style="font-size:20px;color:orange;">Return a book by id of a record.</p></div>
         <div class="form-group">
             <label for="recordid">Record ID</label>
-            <input type="text" class="form-control" id="recordid" placeholder="Record ID" name="id" required="required">
+            <input type="text" class="form-control" id="recordid" placeholder="Record ID" name="id" required="required" pattern="[0-9]{0,3}">
         </div>
         <button type="submit" class="btn btn-default">Return</button>
     </form>

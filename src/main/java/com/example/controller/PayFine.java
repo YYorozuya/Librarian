@@ -10,23 +10,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/returnbook")
-public class ReturnBook extends HttpServlet {
+@WebServlet("/payfine")
+public class PayFine extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         int id = Integer.parseInt(request.getParameter("id"));
-        int result = BusinessService.reTurn(id);
+        int result = BusinessService.payFine(id);
         String resultWords;
         switch (result) {
-            case 0: resultWords = "No such book to return."; break;
+            case 0: resultWords = "No such record of fine to pay."; break;
             case 1: resultWords = "Succeed."; break;
-            case 2: resultWords = "The book is overdue. Need to pay a fine."; break;
             default: resultWords = "Error.";
         }
 
 
         request.setAttribute("result", resultWords);
-        request.getRequestDispatcher("/Auth/returnRtn.jsp").forward(request,response);
+        request.getRequestDispatcher("/Auth/payRtn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

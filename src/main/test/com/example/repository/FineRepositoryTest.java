@@ -13,7 +13,7 @@ class FineRepositoryTest {
         int test;
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         FineRepository rr = sqlSession.getMapper(FineRepository.class);
-        test = rr.insert(1,3);
+        test = rr.insert(1);
         System.out.println(test);
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);

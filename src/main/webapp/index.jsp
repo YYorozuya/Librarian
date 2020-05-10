@@ -76,13 +76,13 @@
                     <ul class="dropdown-menu">
                         <li><a href="Auth/lendBook.jsp">Lend Book</a></li>
                         <li><a href="Auth/returnBook.jsp">Return Book</a></li>
-                        <li><a href="Auth/editReader.jsp">Pay Fine</a></li>
+                        <li><a href="Auth/payFine.jsp">Pay Fine</a></li>
                     </ul>
                 </li>
                 <li class="dropdown home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">History</a>
                     <ul class="dropdown-menu">
-                        <li><a href="Auth/lendBook.jsp">Lending</a></li>
-                        <li><a href="Auth/returnBook.jsp">Fine</a></li>
+                        <li><a href="Auth/lendingHistory.jsp">Lending</a></li>
+                        <li><a href="Auth/fineHistory.jsp">Fine</a></li>
                         <li><a href="Auth/editReader.jsp">Delete</a></li>
                     </ul>
                 </li>

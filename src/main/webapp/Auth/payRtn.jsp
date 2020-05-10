@@ -1,17 +1,16 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SearchBook</title>
+    <title>PayFine</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
     <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
 </head>
 <body>
 <nav class="navbar navbar-default" style="margin-bottom:0px;">
@@ -29,24 +28,16 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active home"><a href="${pageContext.request.contextPath}/">Home</a></li>
-                <li class="dropdown home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
+                <li class="home"><a href="${pageContext.request.contextPath}/">Home</a></li>
+                <li class="dropdown active home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
                     <ul class="dropdown-menu">
-                        <li><a href="bookList.jsp">BookList</a></li>
-                        <li><a href="addBook.jsp">AddBook</a></li>
-                        <li><a href="delBook.jsp">DeleteBook</a></li>
-                        <li><a href="editBook.jsp">EditBook</a></li>
+                        <li><a href="${pageContext.request.contextPath}/librarian/bookList.jsp">BookList</a></li>
+                        <li><a href="${pageContext.request.contextPath}/librarian/addBook.jsp">AddBook</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/librarian/delBook.jsp">DeleteBook</a></li>
+                        <li><a href="${pageContext.request.contextPath}/librarian/editBook.jsp">EditBook</a></li>
                     </ul>
                 </li>
-                <li class="dropdown home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Reader</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="register.jsp">Register</a></li>
-                        <li><a href="editReader.jsp">Edit</a></li>
-                        <li><a href="delReader.jsp">Delete</a></li>
-                        <li><a href="history.jsp">History</a></li>
-                    </ul>
-                </li>
-                <li class="home"><a href="delBook.jsp">Business</a></li>
+                <li class="home"><a href="addBook.jsp">Reader</a></li>
                 <li class="home"><a href="delBook.jsp">Records</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -74,28 +65,14 @@
     </div><!-- /.container-fluid -->
 </nav>
 <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
-    <h1 style="font-size:40px;color:purple;text-align:center"><em>Search Book</em></h1>
+    <h1 style="font-size:40px;color:purple;text-align:center"><em>Pay Fine</em></h1>
 </div>
-<div class="rg_area" style="background-color:white;margin:auto;height:70%;width:1000px;border:1px solid black;border-radius:3px;">
-    <form style="padding-left:200px;padding-top:50px;padding-right:200px;"
-          action="${pageContext.request.contextPath}/searchbook" method="POST">
-        <div><p style="font-size:20px;color:orange;">Search books by name, author and category</p></div>
-        <div class="form-group">
-            <label for="Name">Name</label>
-            <input type="text" class="form-control" id="Name" placeholder="Name" name="name">
-        </div>
-        <div class="form-group">
-            <label for="Author">Author</label>
-            <input type="text" class="form-control" id="Author" placeholder="Author" name="author">
-        </div>
-        <div class="form-group">
-            <label for="Category">Category</label>
-            <input type="text" class="form-control" id="Category" placeholder="Category" name="category">
-        </div>
-        <button type="submit" class="btn btn-default">Search</button>
-    </form>
+<div class="rg_area" style="background-color:white;margin:auto;width:1000px;border:1px solid black;border-radius:3px;">
+    <div><p style="font-size:30px;color:orange;"><%=(String)request.getAttribute("result")%></p></div>
 </div>
-<div class="rg_5">Copyright @Mandarin-Library</div>
-</body>
 
+<div class="rg_5">Copyright @Mandarin-Library</div>
+
+
+</body>
 </html>

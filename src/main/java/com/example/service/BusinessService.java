@@ -65,22 +65,20 @@ public class BusinessService {
         LocalDateTime nowTime = LocalDateTime.ofInstant(now, ZoneId.systemDefault());
         LocalDateTime pastTime = nowTime.minusDays(90);
         long pastLong = pastTime.atZone(ZoneId.systemDefault()).toEpochSecond();//获得90天前以秒为单位的时间戳
-
         int result = lrr.reTurn(id,nowLong);
         Long borrowTime = lrr.getBTime(id);
         if (borrowTime != null && borrowTime < pastLong) { //超过90天加入罚款记录
             FineRepository fr = sqlSession.getMapper(FineRepository.class);
-            fr.insert(id,1);
-            result++;
+            fr.insert(id);
+            result = 2;
         }
-
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return result;
     }
 
     //获得借还书的记录
-    public List<LendingRecord> BRlist() {
+    public static List<LendingRecord> lendingList() {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         LendingRepository brr = sqlSession.getMapper(LendingRepository.class);
         List<LendingRecord> list = brr.findAll();
@@ -90,7 +88,7 @@ public class BusinessService {
     }
 
     //按照id查找借还书记录
-    public LendingRecord findById(int id) {
+    public static LendingRecord findById(int id) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         LendingRepository brr = sqlSession.getMapper(LendingRepository.class);
         LendingRecord record = brr.findById(id);
@@ -104,7 +102,7 @@ public class BusinessService {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         FineRepository fr = sqlSession.getMapper(FineRepository.class);
         long now = Instant.now().getEpochSecond();
-        int result = fr.pay(id, now,1);
+        int result = fr.pay(id, now,5);
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return result;

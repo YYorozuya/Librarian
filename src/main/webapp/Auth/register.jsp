@@ -77,7 +77,7 @@
     <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
         <h1 style="font-size:40px;color:purple;text-align:center"><em>Reader Registry</em></h1>
     </div>
-    <div class="rg_area" style="background-color:white;margin:auto;width:70%;border:1px solid black;border-radius:3px;">
+    <div class="rg_area" style="background-color:white;margin:auto;height:70%;width:70%;border:1px solid black;border-radius:3px;">
         <form style="padding-left:200px;padding-top:50px;padding-right:200px;"
               action="${pageContext.request.contextPath}/register" method="POST">
             <div><p style="font-size:20px;color:orange;">Register an account with initial password.</p></div>

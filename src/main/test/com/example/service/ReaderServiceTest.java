@@ -9,11 +9,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ReaderServiceTest {
     @Test
-    void test() throws IOException, WriterException {
-        ReaderService.register("12345678901","da","132@a.com");
-        ReaderService.register("23456789011","wq","1sad@a.com");
-        ReaderService.register("34567890112","wf","13xz2@a.com");
-        ReaderService.register("45678901123","sd","1da2@a.com");
+    void test() {
+        ReaderService.register("13512345678","Ray","ray@qq.com");
+        ReaderService.register("15312345678","James","james@163.com");
+        ReaderService.register("18887654321","Jason","jason@gmail.com");
+        ReaderService.register("13967891234","Nate","nate@outlook.com");
     }
 
 }
