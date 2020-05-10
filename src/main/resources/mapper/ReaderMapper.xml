@@ -8,7 +8,13 @@
             VALUES (#{id}, #{passwd}, #{name}, #{email}, #{ctime}, #{deposit})
     </insert>
     <update id="edit" parameterType="com.example.domain.Reader">
-        UPDATE reader SET passwd = #{passwd}, name = #{name}, email = #{email} WHERE id = #{id}
+        UPDATE reader
+        <set>
+            <if test="passwd.length()!=0">passwd = #{passwd},</if>
+            <if test="name.length()!=0">name = #{name},</if>
+            <if test="email.length()!=0">email = #{email}</if>
+        </set>
+        WHERE id = #{id}
     </update>
     <delete id="delete" parameterType="java.lang.String">
         DELETE FROM reader WHERE id = #{id}

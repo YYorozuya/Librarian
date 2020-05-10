@@ -30,8 +30,8 @@
     <select id="findByIsbn" parameterType="java.lang.String" resultType="com.example.domain.Book">
         SELECT * FROM book WHERE LOCATE(#{isbn}, id) = 1 /*isbn在id中首次出现的位置为1*/
     </select>
-    <select id="findByName" parameterType="java.lang.String" resultType="com.example.domain.Book">
-        SELECT * FROM book WHERE LOCATE(#{name}, name) > 0
+    <select id="findById" parameterType="java.lang.String" resultType="com.example.domain.Book">
+        SELECT * FROM book WHERE id = #{id};
     </select>
     <select id="findFuzzy" resultType="com.example.domain.Book">
         SELECT * FROM book

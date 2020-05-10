@@ -15,7 +15,12 @@ public class DelBook extends HttpServlet {
         String bkid = request.getParameter("id");
         String libid = (String) request.getSession().getAttribute("LibrarianID");
         int result = BookService.delete(bkid,libid);
-        request.setAttribute("result", result);
+        String resultWords;
+        if (result == 1)
+            resultWords = "Succeed.";
+        else
+            resultWords = "The book was lent. Delete it after it is returned.";
+        request.setAttribute("result", resultWords);
         request.getRequestDispatcher("/Auth/delReturn.jsp").forward(request,response);
     }
 

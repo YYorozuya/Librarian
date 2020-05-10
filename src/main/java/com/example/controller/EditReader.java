@@ -18,8 +18,14 @@ public class EditReader extends HttpServlet {
         String passwd = request.getParameter("passwd");
         String email = request.getParameter("email");
 
-        int result = ReaderService.edit(id,name,passwd,email);
+        int result;
+        if (name.length()==0 && passwd.length()==0 && email.length()==0)
+            result = 0;
+        else
+            result = ReaderService.edit(id,name,passwd,email);
 
+
+        request.setAttribute("result", result);
         request.getRequestDispatcher("/Auth/editReaderReturn.jsp").forward(request,response);
     }
 

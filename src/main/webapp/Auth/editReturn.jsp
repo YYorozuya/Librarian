@@ -78,6 +78,7 @@
     <div><p style="margin-left:30px;font-size:20px;color:orange;">Succeed.</p></div>
     <table class="table table-striped" style="width: 95%; margin: auto">
         <caption>Check the books with ISBN <%=request.getParameter("isbn")%> </caption>
+        <% if ((int)request.getAttribute("result") == 0) %> <caption>Nothing changed</caption>
         <thead>
         <tr>
             <th>Id</th>

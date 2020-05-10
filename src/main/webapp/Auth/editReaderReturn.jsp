@@ -81,6 +81,7 @@
     <div><p style="margin-left:30px;font-size:20px;color:orange;">Succeed</p></div>
     <table class="table table-striped" style="width: 95%; margin: auto">
         <caption>Reader <%= request.getParameter("id")%> </caption>
+        <% if ((int)request.getAttribute("result") == 0) %> <caption>Nothing changed</caption>
         <thead>
         <tr>
             <th>Id</th>
@@ -93,6 +94,7 @@
         <tbody>
         <%
             Reader reader = ReaderService.findById(request.getParameter("id"));
+            if (reader != null) {
         %>
         <tr>
             <td><%=reader.getId()%></td>
@@ -101,6 +103,7 @@
             <td><%=reader.getPasswd()%></td>
             <td><%=reader.getDeposit()%></td>
         </tr>
+        <%}%>
         </tbody>
     </table>
 </div>

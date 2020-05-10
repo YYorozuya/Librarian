@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ReaderRepository {
     int insert(Reader reader);
-    int edit(Reader reader);
+    int edit(@Param("id")String id, @Param("name")String name, @Param("passwd")String passwd, @Param("email")String email);
     int delete(String id);
     List<Reader> findAll();
     Reader findById(String id);

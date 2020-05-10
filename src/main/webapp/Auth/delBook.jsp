@@ -75,7 +75,8 @@
             <div><p style="font-size:20px;color:orange;">Delete a book by ID</p></div>
             <div class="form-group">
                 <label for="BookID">ID</label>
-                <input type="text" class="form-control" id="BookID" placeholder="The ID of the book to be deleted" name="id">
+                <input type="text" class="form-control" id="BookID" placeholder="The ID of the book to be deleted" name="id"
+                       required = "required" pattern="[0-9]{1,17}">
             </div>
             <button type="submit" class="btn btn-default">Delete</button>
 

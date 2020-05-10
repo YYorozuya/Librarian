@@ -82,19 +82,19 @@
         <div><p style="font-size:20px;color:orange;">Edit reader account by reader ID</p></div>
         <div class="form-group">
             <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" placeholder="ID" name="id">
+            <input type="text" class="form-control" id="id" placeholder="ID" name="id" required="required">
         </div>
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+            <input type="text" class="form-control" id="name" placeholder="Name" name="name" pattern=".{0,50}">
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" id="email" placeholder="Email" name="email">
+            <input type="text" class="form-control" id="email" placeholder="Email" name="email" pattern=".{0,30}">
         </div>
         <div class="form-group">
             <label for="passwd">Password</label>
-            <input type="text" class="form-control" id="passwd" placeholder="Password" name="passwd">
+            <input type="text" class="form-control" id="passwd" placeholder="Password(length 6~16)" name="passwd" pattern=".{6,16}">
         </div>
         <button type="submit" class="btn btn-default">Edit</button>
     </form>

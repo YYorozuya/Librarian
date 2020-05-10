@@ -1,7 +1,7 @@
 package com.example.controller;
 
 import com.example.service.BookService;
-import com.example.service.BusinessService;
+import com.example.service.ReaderService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,25 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/lendbook")
-public class LendBook extends HttpServlet {
+@WebServlet("/delreader")
+public class DelReader extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String bkid = request.getParameter("book");
-        String readerid = request.getParameter("reader");
-        int result = BusinessService.lend(bkid,readerid);
+        String rid = request.getParameter("id");
+        int result = ReaderService.delete(rid);
         String resultWords;
         switch (result) {
             case 1: resultWords = "Succeed."; break;
-            case 0: resultWords = "No such book or reader."; break;
-            case -1: resultWords = "The book has been reserved."; break;
-            case -2: resultWords = "The reader has already borrowed 3 books."; break;
-            case -3: resultWords = "The book has been lent."; break;
+            case -1: resultWords = "The reader has books to be returned or has fine to be paid."; break;
+            case 0: resultWords = "No such reader."; break;
             default: resultWords = "Error.";
         }
-
-        request.setAttribute("result",resultWords);
-        request.getRequestDispatcher("/Auth/lendReturn.jsp").forward(request,response);
+        request.setAttribute("result", resultWords);
+        request.getRequestDispatcher("/Auth/delReaderRtn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

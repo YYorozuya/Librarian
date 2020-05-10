@@ -74,15 +74,16 @@
             <div><p style="font-size:20px;color:orange;">Edit books with exact ISBN</p></div>
             <div class="form-group">
                 <label for="ISBN">ISBN</label>
-                <input type="text" class="form-control" id="ISBN" placeholder="ISBN" name="isbn">
+                <input type="text" class="form-control" id="ISBN" name="isbn" placeholder="ISBN"
+                       required="required" pattern="[0-9]{13}">
             </div>
             <div class="form-group">
                 <label for="Name">Name</label>
-                <input type="text" class="form-control" id="Name" placeholder="Name" name="name">
+                <input type="text" class="form-control" id="Name" placeholder="Name" name="name" pattern=".{1,50}">
             </div>
             <div class="form-group">
                 <label for="Author">Author</label>
-                <input type="text" class="form-control" id="Author" placeholder="Author" name="author">
+                <input type="text" class="form-control" id="Author" placeholder="Author" name="author" pattern=".{1,50}">
             </div>
             <div class="form-group">
                 <label for="Category">Category</label>
@@ -90,7 +91,7 @@
             </div>
             <div class="form-group">
                 <label for="Price">Price</label>
-                <input type="text" class="form-control" id="Price" placeholder="Price" name="price">
+                <input type="text" class="form-control" id="Price" placeholder="Price" name="price" pattern="^[0-9]{0,4}([.]{1}[0-9]+){0,1}$">
             </div>
             <div class="form-group">
                 <label for="Floor">Floor</label>

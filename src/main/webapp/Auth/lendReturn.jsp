@@ -68,18 +68,7 @@
     <h1 style="font-size:40px;color:purple;text-align:center"><em>Lend Book</em></h1>
 </div>
 <div class="rg_area" style="background-color:white;margin:auto;width:1000px;border:1px solid black;border-radius:3px;">
-    <%
-        String resultWords = null;
-        int result = (int)request.getAttribute("result");
-        switch (result) {
-            case 1: resultWords = "Suceed."; break;
-            case 0: resultWords = "The book has been reserved."; break;
-            case -1: resultWords = "The reader has already borrowed 3 books."; break;
-            case -2: resultWords = "The book has been lent."; break;
-            default: resultWords = "Error.";
-        }
-    %>
-    <div><p style="font-size:30px;color:orange;"><%=resultWords%></p></div>
+    <div><p style="font-size:30px;color:orange;"><%=(String)request.getAttribute("result")%></p></div>
 </div>
 
 <div class="rg_5">Copyright @Mandarin-Library</div>

@@ -23,22 +23,11 @@ public class AddBook extends HttpServlet {
         String shelfstr = request.getParameter("shelf");
         String areastr = request.getParameter("area");
         String amountstr = request.getParameter("amount");
-        double price = 0;
-        int floor = 0;
-        int shelf = 0;
-        int area = 0;
-        int amount = 0;
-        if (pricestr.length()!=0)
-            price = Double.parseDouble(pricestr);
-        if (floorstr.length()!=0)
-            floor = Integer.parseInt(floorstr);
-        if (shelfstr.length()!=0)
-            shelf = Integer.parseInt(shelfstr);
-        if (areastr.length()!=0)
-            area = Integer.parseInt(areastr);
-        if (amountstr.length()!=0)
-            amount = Integer.parseInt(amountstr);
-
+        double price = Double.parseDouble(pricestr);
+        int floor = Integer.parseInt(floorstr);
+        int shelf = Integer.parseInt(shelfstr);
+        int area = Integer.parseInt(areastr);
+        int amount = Integer.parseInt(amountstr);
         int added = BookService.add(isbn,name,author,category,price,floor,shelf,area,amount);
 
         request.setAttribute("addedNum",added);

@@ -82,39 +82,48 @@
             <div><p style="font-size:20px;color:orange;">Please input the information of new books:</p></div>
             <div class="form-group">
                 <label for="InputBookISBN">ISBN</label>
-                <input type="text" class="form-control" id="InputBookISBN" placeholder="ISBN" name="isbn">
+                <input type="text" class="form-control" id="InputBookISBN" placeholder="ISBN" name="isbn"
+                       required = "required" pattern="[0-9]{13}">
             </div>
             <div class="form-group">
             <label for="InputBookName">Name</label>
-            <input type="text" class="form-control" id="InputBookName" placeholder="Name" name="name">
+            <input type="text" class="form-control" id="InputBookName" placeholder="Name" name="name"
+                   required = "required" pattern=".{1,50}">
         </div>
             <div class="form-group">
             <label for="InputBookAuthor">Author</label>
-            <input type="text" class="form-control" id="InputBookAuthor" placeholder="Author" name="author">
+            <input type="text" class="form-control" id="InputBookAuthor" placeholder="Author" name="author"
+                   required = "required" pattern=".{1,50}">
         </div>
             <div class="form-group">
             <label for="InputBookCategory">Category</label>
-            <input type="text" class="form-control" id="InputBookCategory" placeholder="Category" name="category">
+            <input type="text" class="form-control" id="InputBookCategory" placeholder="Category" name="category"
+                   required="required" oninvalid="setCustomValidity('This field cannot be empty')" oninput="setCustomValidity('')">
         </div>
             <div class="form-group">
             <label for="InputBookPrice">Price</label>
-            <input type="text" class="form-control" id="InputBookPrice" placeholder="Price" name="price">
+            <input type="text" class="form-control" id="InputBookPrice" placeholder="Price" name="price"
+                   required = "required" pattern="^[0-9]{0,4}([.]{1}[0-9]+){0,1}$"> <%--整数位最多为4的小数--%>
         </div>
             <div class="form-group">
             <label for="InputBookFloor">Floor</label>
-            <input type="text" class="form-control" id="InputBookFloor" placeholder="Floor" name="floor">
+            <input type="text" class="form-control" id="InputBookFloor" placeholder="Floor" name="floor"
+                   required = "required" pattern="[0-9]">
         </div>
             <div class="form-group">
             <label for="InputBookShelf">Shelf</label>
-            <input type="text" class="form-control" id="InputBookShelf" placeholder="Shelf" name="shelf">
+            <input type="text" class="form-control" id="InputBookShelf" placeholder="Shelf" name="shelf"
+                   required = "required" pattern="[0-9]">
         </div>
             <div class="form-group">
             <label for="InputBookArea">Area</label>
-            <input type="text" class="form-control" id="InputBookArea" placeholder="Area" name="area">
+            <input type="text" class="form-control" id="InputBookArea" placeholder="Area" name="area"
+                   required = "required" pattern="[0-9]">
         </div>
             <div class="form-group">
             <label for="InputBookAmount">Amount</label>
-            <input type="text" class="form-control" id="InputBookAmount" placeholder="Amount" name="amount">
+            <input type="text" class="form-control" id="InputBookAmount" placeholder="Amount" name="amount"
+                   required = "required" pattern="[0-9]{0,3}"> <%--3位整数--%>
         </div>
             <button type="submit" class="btn btn-default">Add</button>
     </form>

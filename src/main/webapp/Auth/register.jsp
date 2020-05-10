@@ -83,15 +83,18 @@
             <div><p style="font-size:20px;color:orange;">Register an account with initial password.</p></div>
             <div class="form-group">
                 <label for="id">ID</label>
-                <input type="text" class="form-control" id="id" placeholder="Phone number" name="id">
+                <input type="text" class="form-control" id="id" placeholder="Phone number" name="id"
+                       required = "required" pattern="[0-9]{0,11}">
             </div>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+                <input type="text" class="form-control" id="name" placeholder="Name" name="name"
+                       required = "required" pattern=".{0,50}">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" placeholder="Email" name="email">
+                <input type="text" class="form-control" id="email" placeholder="Email" name="email"
+                       required = "required" pattern=".{0,30}">
             </div>
             <button type="submit" class="btn btn-default">Register</button>
         </form>

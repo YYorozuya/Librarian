@@ -1,12 +1,10 @@
 package com.example.service;
 
+import com.example.domain.Book;
 import com.example.domain.LendReturnRecord;
 import com.example.domain.FineRecord;
 import com.example.domain.News;
-import com.example.repository.LendReturnRepository;
-import com.example.repository.FineRepository;
-import com.example.repository.NewsRepository;
-import com.example.repository.ReaderRepository;
+import com.example.repository.*;
 import com.example.utils.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import java.time.Instant;
@@ -19,29 +17,38 @@ public class BusinessService {
     /**
      * @param bkid 书籍id
      * @param rid 读者id
-     * @return 0:书籍已被预定或数据库错误。 -1：该读者借书已达3本。 -2：该书已被借走。 1：借书成功
+     * @return 0:书籍或者读者不存在。 -1：书籍已被预定或数据库错误  -2：该读者借书已达3本。 -3：该书已被借走。 1：借书成功
      */
     public static int lend(String bkid, String rid) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        BookRepository br = sqlSession.getMapper(BookRepository.class);
+        ReaderRepository rr = sqlSession.getMapper(ReaderRepository.class);
         LendReturnRepository lrr = sqlSession.getMapper(LendReturnRepository.class);
-        int result = 0;
+        int result;
 
-        String reservedId = lrr.resvdBy(bkid); //检查书籍是否被该读者预定
-        if (reservedId == null || reservedId.equals(rid)) {
-            int borrowNum = lrr.getBNum(rid); //检查读者是否借满三本书
-            if (borrowNum < 3) {
-                Long lent = lrr.isLent(bkid); //检查该书是否已被借走
-                if (lent == null || lent != 0) { //未被借走
-                    long now = Instant.now().getEpochSecond(); //获得当前以秒为单位的时间戳
-                    LendReturnRecord record = new LendReturnRecord(0,bkid,rid,now,0);
-                    result = lrr.lend(record);
+        if (br.findById(bkid)==null || rr.findById(rid) == null)
+            result = 0;
+        else {
+            String reservedId = lrr.resvdBy(bkid);
+            if (reservedId == null || reservedId.equals(rid)) { //检查书籍是否被该读者预定
+                int borrowNum = lrr.getBNum(rid); //检查读者是否借满三本书
+                if (borrowNum < 3) {
+                    Long lent = lrr.isLent(bkid); //检查该书是否已被借走
+                    if (lent == null || lent != 0) { //未被借走
+                        long now = Instant.now().getEpochSecond(); //获得当前以秒为单位的时间戳
+                        LendReturnRecord record = new LendReturnRecord(0,bkid,rid,now,0);
+                        result = lrr.lend(record);
+                    }
+                    else
+                        result = -3; //书已经被借走
                 }
                 else
-                    result = -2; //书已经被借走
+                    result = -2; //读者借书已达3本
             }
             else
-                result = -1; //读者借书已达3本
+                result = -1; //书籍已经被预定
         }
+
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return result;

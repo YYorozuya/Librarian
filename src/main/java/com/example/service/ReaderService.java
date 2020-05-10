@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.domain.Reader;
+import com.example.repository.FineRepository;
 import com.example.repository.ReaderRepository;
 import com.example.utils.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
@@ -20,19 +21,35 @@ public class ReaderService {
         return result;
     }
 
+
+    /**
+     * @param id  待删除用户的id
+     * @return 1：删除成功  -1：用户有书未还或罚款未缴纳  0：用户不存在或者系统错误
+     */
     public static int delete(String id) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         ReaderRepository rr = sqlSession.getMapper(ReaderRepository.class);
-        int result = rr.delete(id);
-        sqlSession.commit();
-        MyBatisUtil.closeSqlSession(sqlSession);
+        FineRepository fr = sqlSession.getMapper(FineRepository.class);
+        int thingsToDo = fr.check(id);
+        int result;
+        if (thingsToDo > 0)
+            result = -1;
+        else {
+            result = rr.delete(id);
+            sqlSession.commit();
+            MyBatisUtil.closeSqlSession(sqlSession);
+        }
         return result;
     }
 
     public static int edit(String id, String passwd, String name, String email) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         ReaderRepository rr = sqlSession.getMapper(ReaderRepository.class);
-        int result = rr.edit(new Reader(id,passwd,name,email,0L,300));
+        int result;
+        if(rr.findById(id)==null) //如果该读者不存在返回-1
+            result = -1;
+        else
+            result = rr.edit(id, passwd, name, email);
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return result;

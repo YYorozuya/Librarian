@@ -69,14 +69,7 @@
         <h1 style="font-size:40px;color:purple;text-align:center"><em>Delete Book</em></h1>
     </div>
     <div class="rg_area" style="background-color:white;margin:auto;width:1000px;border:1px solid black;border-radius:3px;">
-        <%
-            String words;
-            if((int)request.getAttribute("result") == 1)
-                words = "Succeed.";
-            else
-                words = "The book was lent. Delete it after it is returned.";
-        %>
-        <div><p style="font-size:30px;color:orange;"><%=words%></p></div>
+        <div><p style="font-size:30px;color:orange;"><%=(String)request.getAttribute("result")%></p></div>
     </div>
 
     <div class="rg_5">Copyright @Mandarin-Library</div>
