@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class LendReturnRecord {
+public class LendingRecord {
     private int id; //记录的id
     private String bkid; //书籍id
     private String rid; //读者id

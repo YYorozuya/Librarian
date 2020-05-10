@@ -1,7 +1,6 @@
 package com.example.service;
 
-import com.example.domain.Book;
-import com.example.domain.LendReturnRecord;
+import com.example.domain.LendingRecord;
 import com.example.domain.FineRecord;
 import com.example.domain.News;
 import com.example.repository.*;
@@ -23,7 +22,7 @@ public class BusinessService {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BookRepository br = sqlSession.getMapper(BookRepository.class);
         ReaderRepository rr = sqlSession.getMapper(ReaderRepository.class);
-        LendReturnRepository lrr = sqlSession.getMapper(LendReturnRepository.class);
+        LendingRepository lrr = sqlSession.getMapper(LendingRepository.class);
         int result;
 
         if (br.findById(bkid)==null || rr.findById(rid) == null)
@@ -36,7 +35,7 @@ public class BusinessService {
                     Long lent = lrr.isLent(bkid); //检查该书是否已被借走
                     if (lent == null || lent != 0) { //未被借走
                         long now = Instant.now().getEpochSecond(); //获得当前以秒为单位的时间戳
-                        LendReturnRecord record = new LendReturnRecord(0,bkid,rid,now,0);
+                        LendingRecord record = new LendingRecord(0,bkid,rid,now,0);
                         result = lrr.lend(record);
                     }
                     else
@@ -60,7 +59,7 @@ public class BusinessService {
      */
     public static int reTurn(int id) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
-        LendReturnRepository lrr = sqlSession.getMapper(LendReturnRepository.class);
+        LendingRepository lrr = sqlSession.getMapper(LendingRepository.class);
         Instant now = Instant.now();
         long nowLong = now.getEpochSecond();//获得当前以秒为单位的时间戳
         LocalDateTime nowTime = LocalDateTime.ofInstant(now, ZoneId.systemDefault());
@@ -81,20 +80,20 @@ public class BusinessService {
     }
 
     //获得借还书的记录
-    public List<LendReturnRecord> BRlist() {
+    public List<LendingRecord> BRlist() {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
-        LendReturnRepository brr = sqlSession.getMapper(LendReturnRepository.class);
-        List<LendReturnRecord> list = brr.findAll();
+        LendingRepository brr = sqlSession.getMapper(LendingRepository.class);
+        List<LendingRecord> list = brr.findAll();
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return list;
     }
 
     //按照id查找借还书记录
-    public LendReturnRecord findById(int id) {
+    public LendingRecord findById(int id) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
-        LendReturnRepository brr = sqlSession.getMapper(LendReturnRepository.class);
-        LendReturnRecord record = brr.findById(id);
+        LendingRepository brr = sqlSession.getMapper(LendingRepository.class);
+        LendingRecord record = brr.findById(id);
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return record;

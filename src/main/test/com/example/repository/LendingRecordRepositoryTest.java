@@ -4,12 +4,12 @@ import com.example.utils.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Test;
 
-class LendReturnRecordRepositoryTest {
+class LendingRecordRepositoryTest {
     @Test
     void test() {
         long test;
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
-        LendReturnRepository br = sqlSession.getMapper(LendReturnRepository.class);
+        LendingRepository br = sqlSession.getMapper(LendingRepository.class);
         test = br.getBNum("123");
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);

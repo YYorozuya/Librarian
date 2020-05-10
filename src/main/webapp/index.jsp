@@ -60,7 +60,7 @@
                         <li><a href="Auth/addBook.jsp">AddBook</a></li>
                         <li><a href="Auth/delBook.jsp">DeleteBook</a></li>
                         <li><a href="Auth/editBook.jsp">EditBook</a></li>
-                        <li><a href="Auth/searchBook.jsp">searchBook</a></li>
+                        <li><a href="Auth/searchBook.jsp">SearchBook</a></li>
                     </ul>
                 </li>
                 <li class="dropdown home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Reader</a>

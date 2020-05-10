@@ -21,7 +21,7 @@ public class DelBook extends HttpServlet {
         else
             resultWords = "The book was lent. Delete it after it is returned.";
         request.setAttribute("result", resultWords);
-        request.getRequestDispatcher("/Auth/delReturn.jsp").forward(request,response);
+        request.getRequestDispatcher("/Auth/delBookRtn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

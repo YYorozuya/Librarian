@@ -28,7 +28,7 @@ public class LendBook extends HttpServlet {
         }
 
         request.setAttribute("result",resultWords);
-        request.getRequestDispatcher("/Auth/lendReturn.jsp").forward(request,response);
+        request.getRequestDispatcher("/Auth/lendRtn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

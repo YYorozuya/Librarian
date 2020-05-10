@@ -32,7 +32,7 @@ public class AddBook extends HttpServlet {
 
         request.setAttribute("addedNum",added);
 
-        request.getRequestDispatcher("/Auth/addReturn.jsp").forward(request,response);
+        request.getRequestDispatcher("/Auth/addBookRtn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

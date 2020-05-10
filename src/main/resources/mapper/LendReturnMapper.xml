@@ -2,18 +2,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.repository.LendReturnRepository">
-    <insert id="lend" parameterType="com.example.domain.LendReturnRecord">
+<mapper namespace="com.example.repository.LendingRepository">
+    <insert id="lend" parameterType="com.example.domain.LendingRecord">
         INSERT INTO br_record (id, bkid, rid, btime, rtime)
             VALUES (#{id}, #{bkid}, #{rid}, #{btime}, #{rtime})
     </insert>
     <update id="reTurn">
         UPDATE br_record SET rtime = #{time} WHERE id = #{id}
     </update>
-    <select id="findById" parameterType="int" resultType="com.example.domain.LendReturnRecord">
+    <select id="findById" parameterType="int" resultType="com.example.domain.LendingRecord">
         SELECT * FROM br_record WHERE id = #{id}
     </select>
-    <select id="findAll" resultType="com.example.domain.LendReturnRecord">
+    <select id="findAll" resultType="com.example.domain.LendingRecord">
         SELECT * FROM br_record
     </select>
     <select id="getBNum" parameterType="java.lang.String" resultType="int">

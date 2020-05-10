@@ -47,7 +47,7 @@ public class EditBook extends HttpServlet {
         }
 
         request.setAttribute("result", result);
-        request.getRequestDispatcher("/Auth/editReturn.jsp").forward(request,response);
+        request.getRequestDispatcher("/Auth/editBookRtn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
