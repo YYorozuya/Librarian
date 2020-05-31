@@ -9,8 +9,7 @@ public interface BookRepository {
     int insert(Book book);
     int edit(Book book);
     int editByIsbn(@Param("isbn")String isbn, @Param("name")String name, @Param("author")String author,
-                   @Param("category")String category, @Param("price")Double price, @Param("floor")Integer floor,
-                   @Param("shelf")Integer shelf, @Param("area")Integer area);
+                   @Param("category")String category, @Param("price")Double price, @Param("location")String location);
     int delete(String id);
     List<Book> findAll();
     List<Book> findByIsbn(String isbn);

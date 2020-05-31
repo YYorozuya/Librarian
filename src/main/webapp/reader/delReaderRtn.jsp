@@ -37,8 +37,8 @@
                             <li><a href="${pageContext.request.contextPath}/librarian/editBook.jsp">EditBook</a></li>
                         </ul>
                     </li>
-                    <li class="home"><a href="addBook.jsp">Reader</a></li>
-                    <li class="home"><a href="delBook.jsp">Records</a></li>
+                    <li class="home"><a href="../book/addBook.jsp">Reader</a></li>
+                    <li class="home"><a href="../book/delBook.jsp">Records</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <% //判断是否为登陆

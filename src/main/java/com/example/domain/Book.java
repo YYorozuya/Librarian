@@ -13,8 +13,5 @@ public class Book {
     private String author;
     private String category;
     private double price;
-    private int floor;
-    private int shelf;
-    private int area;
-    private int reserved;
+    private String location;
 }

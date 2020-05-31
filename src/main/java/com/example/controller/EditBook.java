@@ -18,36 +18,24 @@ public class EditBook extends HttpServlet {
         String author = request.getParameter("author");
         String category = request.getParameter("category");
         String pricestr = request.getParameter("price");
-        String floorstr = request.getParameter("floor");
-        String shelfstr = request.getParameter("shelf");
-        String areastr = request.getParameter("area");
+        String location = request.getParameter("location");
 
         int result;
 
         if (name.length() == 0 && author.length() == 0 && category.length() == 0 &&
-                pricestr.length() == 0 && floorstr.length() == 0 &&
-                shelfstr.length() == 0 && areastr.length() == 0)
+                pricestr.length() == 0 && location.length()==0)
             result = 0;
 
         else {
             Double price = null;
-            Integer floor = null;
-            Integer shelf = null;
-            Integer area = null;
             if (pricestr.length()!=0)
                 price = Double.parseDouble(pricestr);
-            if (floorstr.length()!=0)
-                floor = Integer.parseInt(floorstr);
-            if (shelfstr.length()!=0)
-                shelf = Integer.parseInt(shelfstr);
-            if (areastr.length()!=0)
-                area = Integer.parseInt(areastr);
 
-            result = BookService.editByIsbn(isbn,name,author,category,price,floor,shelf,area);
+            result = BookService.editByIsbn(isbn,name,author,category,price,location);
         }
 
         request.setAttribute("result", result);
-        request.getRequestDispatcher("/Auth/editBookRtn.jsp").forward(request,response);
+        request.getRequestDispatcher("/book/editBookRtn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

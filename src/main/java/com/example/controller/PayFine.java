@@ -25,7 +25,7 @@ public class PayFine extends HttpServlet {
 
 
         request.setAttribute("result", resultWords);
-        request.getRequestDispatcher("/Auth/payRtn.jsp").forward(request,response);
+        request.getRequestDispatcher("/business/payRtn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

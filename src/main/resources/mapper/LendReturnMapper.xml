@@ -4,28 +4,28 @@
 
 <mapper namespace="com.example.repository.LendingRepository">
     <insert id="lend" parameterType="com.example.domain.LendingRecord">
-        INSERT INTO br_record (id, bkid, rid, btime, rtime)
+        INSERT INTO lending (id, bkid, rid, btime, rtime)
             VALUES (#{id}, #{bkid}, #{rid}, #{btime}, #{rtime})
     </insert>
     <update id="reTurn">
-        UPDATE br_record SET rtime = #{time} WHERE id = #{id}
+        UPDATE lending SET rtime = #{time} WHERE id = #{id}
     </update>
     <select id="findById" parameterType="int" resultType="com.example.domain.LendingRecord">
-        SELECT * FROM br_record WHERE id = #{id}
+        SELECT * FROM lending WHERE id = #{id}
     </select>
     <select id="findAll" resultType="com.example.domain.LendingRecord">
-        SELECT * FROM br_record
+        SELECT * FROM lending
     </select>
     <select id="getBNum" parameterType="java.lang.String" resultType="int">
-        SELECT COUNT(*) FROM br_record WHERE rid = #{rid} AND rtime = 0
+        SELECT COUNT(*) FROM lending WHERE rid = #{rid} AND rtime = 0
     </select>
     <select id="resvdBy" parameterType="java.lang.String" resultType="java.lang.String">
         SELECT rid FROM reserve WHERE bkid = #{bkid}
     </select>
     <select id="isLent" parameterType="java.lang.String" resultType="java.lang.Long">
-        SELECT rtime FROM br_record WHERE bkid = #{bkid} ORDER BY btime DESC LIMIT 1
+        SELECT rtime FROM lending WHERE bkid = #{bkid} ORDER BY btime DESC LIMIT 1
     </select><!--降序取第一列-->
     <select id="getBTime" parameterType="int" resultType="java.lang.Long">
-        SELECT btime FROM br_record WHERE id = #{id}
+        SELECT btime FROM lending WHERE id = #{id}
     </select>
 </mapper>

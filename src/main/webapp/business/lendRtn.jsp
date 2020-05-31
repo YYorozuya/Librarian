@@ -1,31 +1,20 @@
-<%@ page import="com.example.service.BookService" %>
-<%@ page import="com.example.domain.Book" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<%
-    String isbn = request.getParameter("isbn");
-    int amount = (int)request.getAttribute("addedNum");
-    List<Book> addResult = BookService.addedList(request.getParameter("isbn"),amount);
-%>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AddBook</title>
+    <title>LendBook</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
     <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/JsBarcode.all.min.js"></script>
 </head>
-
 <body>
-    <nav class="navbar navbar-default" style="margin-bottom:0px;">
-        <div class="container-fluid">
+<nav class="navbar navbar-default" style="margin-bottom:0px;">
+    <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -42,14 +31,14 @@
                 <li class="home"><a href="${pageContext.request.contextPath}/">Home</a></li>
                 <li class="dropdown active home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/Auth/bookList.jsp">BookList</a></li>
-                        <li class="active"><a href="${pageContext.request.contextPath}/Auth/addBook.jsp">AddBook</a></li>
-                        <li><a href="${pageContext.request.contextPath}/Auth/delBook.jsp">DeleteBook</a></li>
-                        <li><a href="${pageContext.request.contextPath}/Auth/editBook.jsp">EditBook</a></li>
+                        <li><a href="${pageContext.request.contextPath}/librarian/bookList.jsp">BookList</a></li>
+                        <li><a href="${pageContext.request.contextPath}/librarian/addBook.jsp">AddBook</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/librarian/delBook.jsp">DeleteBook</a></li>
+                        <li><a href="${pageContext.request.contextPath}/librarian/editBook.jsp">EditBook</a></li>
                     </ul>
                 </li>
-                <li class="home"><a href="addBook.jsp">Reader</a></li>
-                <li class="home"><a href="delBook.jsp">Records</a></li>
+                <li class="home"><a href="../book/addBook.jsp">Reader</a></li>
+                <li class="home"><a href="../book/delBook.jsp">Records</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <% //判断是否为登陆
@@ -74,40 +63,16 @@
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
-    </nav>
-    <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
-        <h1 style="font-size:40px;color:purple;text-align:center"><em>Add Books</em></h1>
-    </div>
-    <div class="rg_area" style="background-color:white;margin:auto;width:70%;border:1px solid black;border-radius:3px;">
-        <div><p style="margin-left:30px;font-size:20px;color:orange;">Added <%=amount%> books.</p></div>
-        <table class="table table-striped" style="width: 95%; margin: auto">
-            <caption>Check the books added: </caption>
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Floor</th>
-                <th>Shelf</th>
-                <th>Area</th>
-                <th>Barcode</th>
-            </tr>
-            </thead>
-            <tbody>
-            <%for ( Book book:addResult){%>
-            <tr>
-                <td><%=book.getId()%></td>
-                <td><%=book.getFloor()%></td>
-                <td><%=book.getShelf()%></td>
-                <td><%=book.getArea()%></td>
-                <td>
-                    <img id = "<%=book.getId()%>" width="180px" height="90px">
-                    <script>$("#<%=book.getId()%>").JsBarcode("<%=book.getId()%>")</script>
-                </td>
-                <td></td>
-            </tr>
-            <%}%>
-            </tbody>
-        </table>
-    </div>
-    <div class="rg_5">Copyright @Mandarin-Library</div>
+</nav>
+<div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
+    <h1 style="font-size:40px;color:purple;text-align:center"><em>Lend Book</em></h1>
+</div>
+<div class="rg_area" style="background-color:white;margin:auto;width:1000px;height:60%;border:1px solid black;border-radius:3px;">
+    <div><p style="font-size:30px;color:orange;"><%=(String)request.getAttribute("result")%></p></div>
+</div>
+
+<div class="rg_5">Copyright @Mandarin-Library</div>
+
+
 </body>
 </html>

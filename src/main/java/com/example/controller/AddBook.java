@@ -19,20 +19,15 @@ public class AddBook extends HttpServlet {
         String author = request.getParameter("author");
         String category = request.getParameter("category");
         String pricestr = request.getParameter("price");
-        String floorstr = request.getParameter("floor");
-        String shelfstr = request.getParameter("shelf");
-        String areastr = request.getParameter("area");
+        String location = request.getParameter("location");
         String amountstr = request.getParameter("amount");
         double price = Double.parseDouble(pricestr);
-        int floor = Integer.parseInt(floorstr);
-        int shelf = Integer.parseInt(shelfstr);
-        int area = Integer.parseInt(areastr);
         int amount = Integer.parseInt(amountstr);
-        int added = BookService.add(isbn,name,author,category,price,floor,shelf,area,amount);
+        int added = BookService.add(isbn,name,author,category,price,location,amount);
 
         request.setAttribute("addedNum",added);
 
-        request.getRequestDispatcher("/Auth/addBookRtn.jsp").forward(request,response);
+        request.getRequestDispatcher("/book/addBookRtn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

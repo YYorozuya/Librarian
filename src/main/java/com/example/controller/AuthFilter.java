@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter("/Auth/*")
+@WebFilter(urlPatterns = {"/book/*","/reader/*","/business/*","/history/*","/news/*"})
 public class AuthFilter implements Filter {
     public void destroy() {
     }

@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.service.Settings" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -77,7 +79,7 @@
         <h1 style="font-size:40px;color:purple;text-align:center"><em>Add Books</em></h1>
     </div>
     <div class="rg_area" style="background-color:white;margin:auto;width:70%;border:1px solid black;border-radius:3px;">
-        <form style="padding-left:200px;padding-top:50px;padding-right:200px;"
+        <form style="padding-left:200px;padding-top:50px;padding-right:200px;padding-bottom:50px;"
           action="${pageContext.request.contextPath}/addbook" method="POST">
             <div><p style="font-size:20px;color:orange;">Please input the information of new books:</p></div>
             <div class="form-group">
@@ -89,37 +91,40 @@
             <label for="InputBookName">Name</label>
             <input type="text" class="form-control" id="InputBookName" placeholder="Name" name="name"
                    required = "required" pattern=".{1,50}">
-        </div>
+            </div>
             <div class="form-group">
             <label for="InputBookAuthor">Author</label>
             <input type="text" class="form-control" id="InputBookAuthor" placeholder="Author" name="author"
                    required = "required" pattern=".{1,50}">
-        </div>
+            </div>
             <div class="form-group">
-            <label for="InputBookCategory">Category</label>
-            <input type="text" class="form-control" id="InputBookCategory" placeholder="Category" name="category"
-                   required="required" oninvalid="setCustomValidity('This field cannot be empty')" oninput="setCustomValidity('')">
-        </div>
+
+                <label for="InputBookCategory">Category</label>
+                <select class="form-control" id = InputBookCategory name="category">
+                    <%
+                        List<String> categories = Settings.getCategories();
+                        for (String category:categories) {
+                    %>
+                    <option><%=category%></option>
+                    <%}%>
+                </select>
+            </div>
             <div class="form-group">
             <label for="InputBookPrice">Price</label>
             <input type="text" class="form-control" id="InputBookPrice" placeholder="Price" name="price"
                    required = "required" pattern="^[0-9]{0,4}([.]{1}[0-9]+){0,1}$"> <%--整数位最多为4的小数--%>
-        </div>
+            </div>
             <div class="form-group">
-            <label for="InputBookFloor">Floor</label>
-            <input type="text" class="form-control" id="InputBookFloor" placeholder="Floor" name="floor"
-                   required = "required" pattern="[0-9]">
-        </div>
-            <div class="form-group">
-            <label for="InputBookShelf">Shelf</label>
-            <input type="text" class="form-control" id="InputBookShelf" placeholder="Shelf" name="shelf"
-                   required = "required" pattern="[0-9]">
-        </div>
-            <div class="form-group">
-            <label for="InputBookArea">Area</label>
-            <input type="text" class="form-control" id="InputBookArea" placeholder="Area" name="area"
-                   required = "required" pattern="[0-9]">
-        </div>
+            <label for="InputLocation">Location (floor-shelf-area)</label>
+                <select class="form-control" id = InputLocation name="location">
+                    <%
+                        List<String> locations = Settings.getLocations();
+                        for (String location:locations) {
+                    %>
+                    <option><%=location%></option>
+                    <%}%>
+                </select>
+            </div>
             <div class="form-group">
             <label for="InputBookAmount">Amount</label>
             <input type="text" class="form-control" id="InputBookAmount" placeholder="Amount" name="amount"

@@ -22,6 +22,7 @@
         <mapper resource="mapper/FineMapper.xml"/>
         <mapper resource="mapper/NewsMapper.xml"/>
         <mapper resource="mapper/DelRecordMapper.xml"/>
+        <mapper resource="mapper/SettingMapper.xml"/>
     </mappers>
 
 </configuration>

@@ -1,35 +1,26 @@
+<%@ page import="com.example.service.BookService" %>
+<%@ page import="com.example.domain.Book" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.example.domain.LendingRecord" %>
-<%@ page import="com.example.service.BusinessService" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
-<%@ page import="java.time.Instant" %>
-<%@ page import="java.time.LocalDateTime" %>
-<%@ page import="java.time.ZoneId" %>
-<%@ page import="com.example.domain.FineRecord" %>
-<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
-<% List<FineRecord> list = BusinessService.fineList();%>
-
-<!DOCTYPE html>
+<% List<Book> bookList = BookService.findByIsbn(request.getParameter("isbn"));%>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LendingHistory</title>
+    <title>EditBook</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
     <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/JsBarcode.all.min.js"></script>
+
+
 </head>
-
 <body>
-
-<nav class="navbar navbar-default" style="margin-bottom:0px;">
+    <nav class="navbar navbar-default" style="margin-bottom:0px;">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -47,10 +38,10 @@
                 <li class="home"><a href="${pageContext.request.contextPath}/">Home</a></li>
                 <li class="dropdown active home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
                     <ul class="dropdown-menu">
-                        <li class="active"><a href="bookList.jsp">BookList</a></li>
-                        <li><a href="addBook.jsp">AddBook</a></li>
-                        <li><a href="delBook.jsp">DeleteBook</a></li>
-                        <li><a href="editBook.jsp">EditBook</a></li>
+                        <li><a href="${pageContext.request.contextPath}/librarian/bookList.jsp">BookList</a></li>
+                        <li><a href="${pageContext.request.contextPath}/librarian/addBook.jsp">AddBook</a></li>
+                        <li><a href="${pageContext.request.contextPath}/librarian/delBook.jsp">DeleteBook</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/librarian/editBook.jsp">EditBook</a></li>
                     </ul>
                 </li>
                 <li class="home"><a href="addBook.jsp">Reader</a></li>
@@ -80,51 +71,42 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-
-<div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
-    <h1 style="font-size:40px; color:purple; text-align:center"><em>Fine History</em></h1>
+    <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
+    <h1 style="font-size:40px;color:purple;text-align:center"><em>Edit Books</em></h1>
 </div>
-
-<div class="rg_area" style="background-color:white;margin:auto;width:70%;border:1px solid black;border-radius:3px;">
-    <table class="table table-striped" style="width:95%;margin:auto;margin-bottom:10%">
+    <div class="rg_area" style="background-color:white;margin:auto;height:900px;width:70%;border:1px solid black;border-radius:3px;">
+    <div><p style="margin-left:30px;font-size:20px;color:orange;">Succeed.</p></div>
+    <table class="table table-striped" style="width: 95%; margin: auto">
+        <caption>Check the books with ISBN <%=request.getParameter("isbn")%> </caption>
+        <% if ((int)request.getAttribute("result") == 0) %> <caption>Nothing changed</caption>
         <thead>
         <tr>
-            <th>ID</th>
-            <th>BookID</th>
-            <th>ReaderID</th>
-            <th>BorrowTime</th>
-            <th>ReturnTime</th>
-            <th>Amount</th>
-            <th>PayTime</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Floor</th>
+            <th>Shelf</th>
+            <th>Area</th>
         </tr>
         </thead>
         <tbody>
-        <%
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            for (FineRecord fine: list){
-                Instant instantB = Instant.ofEpochSecond(fine.getRecord().getBtime());
-                LocalDateTime btime = LocalDateTime.ofInstant(instantB, ZoneId.systemDefault());
-                Instant instantR = Instant.ofEpochSecond(fine.getRecord().getBtime());
-                LocalDateTime rtime = LocalDateTime.ofInstant(instantR, ZoneId.systemDefault());
-        %>
+        <%for ( Book book:bookList){ %>
         <tr>
-            <td><%=fine.getRecord().getId()%></td>
-            <td><%=fine.getRecord().getBkid()%></td>
-            <td><%=fine.getRecord().getRid()%></td>
-            <td><%=formatter.format(btime)%></td>
-            <td><%=formatter.format(rtime)%></td>
-            <td><%=fine.getAmount()%></td>
-            <% if(fine.getTime() > 0) {
-                Instant instantP = Instant.ofEpochSecond(fine.getTime());
-                LocalDateTime ptime = LocalDateTime.ofInstant(instantP, ZoneId.systemDefault());
-            %> <td><%=formatter.format(ptime)%></td>
-            <%} else {%>  <td>Not yet</td> <%}%>
+            <td><%=book.getId()%></td>
+            <td><%=book.getName()%></td>
+            <td><%=book.getAuthor()%></td>
+            <td><%=book.getCategory()%></td>
+            <td><%=book.getPrice()%></td>
+            <td><%=book.getLocation().charAt(0)%></td>
+            <td><%=book.getLocation().charAt(2)%></td>
+            <td><%=book.getLocation().charAt(4)%></td>
         </tr>
-        <% }%>
+        <%}%>
         </tbody>
     </table>
 </div>
-
-<div class="rg_5">Copyright @Mandarin-Library</div>
+    <div class="rg_5">Copyright @Mandarin-Library</div>
 </body>
 </html>

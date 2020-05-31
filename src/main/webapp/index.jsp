@@ -56,34 +56,42 @@
                 <li class="active home"><a href="${pageContext.request.contextPath}/">Home</a></li>
                 <li class="dropdown home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
                     <ul class="dropdown-menu">
-                        <li><a href="Auth/bookList.jsp">BookList</a></li>
-                        <li><a href="Auth/addBook.jsp">AddBook</a></li>
-                        <li><a href="Auth/delBook.jsp">DeleteBook</a></li>
-                        <li><a href="Auth/editBook.jsp">EditBook</a></li>
-                        <li><a href="Auth/searchBook.jsp">SearchBook</a></li>
+                        <li><a href="book/bookList.jsp">BookList</a></li>
+                        <li><a href="book/addBook.jsp">AddBook</a></li>
+                        <li><a href="book/delBook.jsp">DeleteBook</a></li>
+                        <li><a href="book/editBook.jsp">EditBook</a></li>
+                        <li><a href="book/searchBook.jsp">SearchBook</a></li>
                     </ul>
                 </li>
                 <li class="dropdown home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Reader</a>
                     <ul class="dropdown-menu">
-                        <li><a href="Auth/readerList.jsp">List</a></li>
-                        <li><a href="Auth/register.jsp">Register</a></li>
-                        <li><a href="Auth/editReader.jsp">Edit</a></li>
-                        <li><a href="Auth/delReader.jsp">Delete</a></li>
-                        <li><a href="Auth/history.jsp">History</a></li>
+                        <li><a href="reader/readerList.jsp">List</a></li>
+                        <li><a href="reader/register.jsp">Register</a></li>
+                        <li><a href="reader/editReader.jsp">Edit</a></li>
+                        <li><a href="reader/delReader.jsp">Delete</a></li>
+                        <li><a href="reader/readerHistory.jsp">History</a></li>
                     </ul>
                 </li>
                 <li class="dropdown home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Business</a>
                     <ul class="dropdown-menu">
-                        <li><a href="Auth/lendBook.jsp">Lend Book</a></li>
-                        <li><a href="Auth/returnBook.jsp">Return Book</a></li>
-                        <li><a href="Auth/payFine.jsp">Pay Fine</a></li>
+                        <li><a href="business/lendBook.jsp">Lend Book</a></li>
+                        <li><a href="business/returnBook.jsp">Return Book</a></li>
+                        <li><a href="business/payFine.jsp">Pay Fine</a></li>
                     </ul>
                 </li>
                 <li class="dropdown home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">History</a>
                     <ul class="dropdown-menu">
-                        <li><a href="Auth/lendingHistory.jsp">Lending</a></li>
-                        <li><a href="Auth/fineHistory.jsp">Fine</a></li>
-                        <li><a href="Auth/editReader.jsp">Delete</a></li>
+                        <li><a href="history/lendingHistory.jsp">Lending</a></li>
+                        <li><a href="history/fineHistory.jsp">Fine</a></li>
+                        <li><a href="reader/editReader.jsp">Delete</a></li>
+                        <li><a href="history/income.jsp">Income</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">News</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="history/lendingHistory.jsp">News List</a></li>
+                        <li><a href="news/postnews.jsp">Post News</a></li>
+                        <li><a href="reader/editReader.jsp">Delete</a></li>
                     </ul>
                 </li>
 
@@ -133,8 +141,11 @@
         <div class="item">
             <img src="${pageContext.request.contextPath}/img/pic2.jpg" alt=".." style="margin:auto;margin-top:0px;heiht:200px;">
         </div>
-        <div class="rg_5">Copyright @Mandarin-Library</div>
+        <div class="item">
+            <img src="${pageContext.request.contextPath}/img/pic2.jpg" alt=".." style="margin:auto;margin-top:0px;heiht:200px;">
+        </div>
     </div>
+    <div class="rg_5">Copyright @Mandarin-Library</div>
 
     <!-- Controls -->
     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">

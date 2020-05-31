@@ -39,14 +39,14 @@
                 <li class="home"><a href="${pageContext.request.contextPath}/">Home</a></li>
                 <li class="dropdown active home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
                     <ul class="dropdown-menu">
-                        <li class="active"><a href="bookList.jsp">BookList</a></li>
-                        <li><a href="addBook.jsp">AddBook</a></li>
-                        <li><a href="delBook.jsp">DeleteBook</a></li>
-                        <li><a href="editBook.jsp">EditBook</a></li>
+                        <li class="active"><a href="../book/bookList.jsp">BookList</a></li>
+                        <li><a href="../book/addBook.jsp">AddBook</a></li>
+                        <li><a href="../book/delBook.jsp">DeleteBook</a></li>
+                        <li><a href="../book/editBook.jsp">EditBook</a></li>
                     </ul>
                 </li>
-                <li class="home"><a href="addBook.jsp">Reader</a></li>
-                <li class="home"><a href="delBook.jsp">Records</a></li>
+                <li class="home"><a href="../book/addBook.jsp">Reader</a></li>
+                <li class="home"><a href="../book/delBook.jsp">Records</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <% //判断是否为登陆
@@ -74,7 +74,7 @@
 </nav>
 
 <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
-    <h1 style="font-size:40px; color:purple; text-align:center"><em>Book List</em></h1>
+    <h1 style="font-size:40px; color:purple; text-align:center"><em>Reader List</em></h1>
 </div>
 <div class="rg_area" style="background-color:white;margin:auto;width:70%;border:1px solid black;border-radius:3px;">
     <table class="table table-striped" style="width:95%;margin:auto;margin-bottom:10%">

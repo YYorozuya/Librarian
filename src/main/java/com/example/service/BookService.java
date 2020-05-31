@@ -13,7 +13,7 @@ import java.time.Instant;
 import java.util.List;
 
 public class BookService {
-    public static int add(String isbn, String name, String author, String category, double price, int floor, int shelf, int area, int amount) {
+    public static int add(String isbn, String name, String author, String category, double price, String location, int amount) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BookRepository br = sqlSession.getMapper(BookRepository.class);
         String maxId = br.maxId(isbn);
@@ -27,7 +27,7 @@ public class BookService {
         DecimalFormat df = new DecimalFormat("0000");
         for (int i = 0; i < amount; i++) {
             String id = isbn + df.format(++current);
-            Book book = new Book(id,name,author,category,price,floor,shelf,area,0);
+            Book book = new Book(id,name,author,category,price,location);
             br.insert(book);
         }
         String maxId2 = br.maxId(isbn);
@@ -92,19 +92,19 @@ public class BookService {
         return list;
     }
 
-    public static int edit(String id, String name, String author, String category, Double price, Integer floor, Integer shelf, Integer area) {
+    public static int edit(String id, String name, String author, String category, Double price, String location) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BookRepository br = sqlSession.getMapper(BookRepository.class);
-        int result = br.edit(new Book(id,name,author,category,price,floor,shelf,area,0));
+        int result = br.edit(new Book(id,name,author,category,price,location));
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return result;
     }
 
-    public static int editByIsbn(String isbn, String name, String author, String category, Double price, Integer floor, Integer shelf, Integer area) {
+    public static int editByIsbn(String isbn, String name, String author, String category, Double price, String location) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BookRepository br = sqlSession.getMapper(BookRepository.class);
-        int result = br.editByIsbn(isbn,name,author,category,price,floor,shelf,area);
+        int result = br.editByIsbn(isbn,name,author,category,price,location);
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return result;

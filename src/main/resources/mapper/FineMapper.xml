@@ -22,13 +22,13 @@
     </update>
     <select id="findAll" resultMap="FineRecordMap">
         SELECT f.id, bkid, rid, btime, rtime, amount, time
-            FROM fine f, br_record b WHERE f.id = b.id
+            FROM fine f, lending b WHERE f.id = b.id
     </select>
     <select id="sumBy" parameterType="long" resultType="java.lang.Double">
         SELECT SUM(amount) FROM fine WHERE time > #{since}
     </select>
     <select id="check" parameterType="String" resultType="int">
-        SELECT COUNT(*) FROM fine f, br_record b WHERE f.id = b.id
+        SELECT COUNT(*) FROM fine f, lending b WHERE f.id = b.id
             AND rid = #{id} AND (rtime = 0 OR time = 0)
     </select>
 </mapper>

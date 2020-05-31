@@ -1,0 +1,24 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.repository.SettingRepository">
+    <insert id="addCategory">
+        INSERT INTO category (name) VALUES (#{name})
+    </insert>
+    <delete id="delCategory">
+        DELETE FROM category WHERE name = #{name}
+    </delete>
+    <select id="findAllC" resultType="java.lang.String">
+        SELECT * FROM category
+    </select>
+    <insert id="addLocation">
+        INSERT INTO location (name) VALUES (#{name})
+    </insert>
+    <delete id="delLocation">
+        DELETE FROM location WHERE name = #{name}
+    </delete>
+    <select id="findAllL" resultType="java.lang.String">
+        SELECT * FROM location
+    </select>
+
+</mapper>

@@ -26,7 +26,7 @@ public class ReturnBook extends HttpServlet {
 
 
         request.setAttribute("result", resultWords);
-        request.getRequestDispatcher("/Auth/returnRtn.jsp").forward(request,response);
+        request.getRequestDispatcher("/business/returnRtn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

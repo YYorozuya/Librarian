@@ -24,7 +24,7 @@ public class DelReader extends HttpServlet {
             default: resultWords = "Error.";
         }
         request.setAttribute("result", resultWords);
-        request.getRequestDispatcher("/Auth/delReaderRtn.jsp").forward(request,response);
+        request.getRequestDispatcher("/reader/delReaderRtn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

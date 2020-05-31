@@ -4,8 +4,8 @@
 
 <mapper namespace="com.example.repository.BookRepository">
     <insert id="insert" parameterType="com.example.domain.Book">
-        INSERT INTO book (id,name,author,category,price,floor,shelf,area,reserved)
-            VALUES (#{id},#{name},#{author},#{category},#{price},#{floor},#{shelf},#{area},#{reserved})
+        INSERT INTO book (id,name,author,category,price,location)
+            VALUES (#{id},#{name},#{author},#{category},#{price},#{location})
     </insert>
     <delete id="delete" parameterType="java.lang.String">
         DELETE FROM book WHERE id = #{id}
@@ -14,16 +14,14 @@
         UPDATE book SET name = #{name}, author = #{author}, category = #{category}, price = #{price}, floor = #{floor}, shelf = #{shelf}, area = #{area}
             WHERE id = #{id}
     </update>
-    <update id="editByIsbn">
+    <update id="editByIsbn" parameterType="com.example.domain.Book">
         UPDATE book
         <set>
             <if test="name.length()!=0">name = #{name},</if>
             <if test="author.length()!=0">author = #{author},</if>
             <if test="category.length()!=0">category = #{category},</if>
             <if test="price!=null">price = #{price},</if>
-            <if test="floor!=null">floor = #{floor},</if>
-            <if test="shelf!=null">shelf = #{shelf},</if>
-            <if test="shelf!=null">area = #{area}</if>
+            <if test="location.length()!=0">location = #{location}</if>
         </set>
         WHERE LOCATE(#{isbn}, id) = 1
     </update>

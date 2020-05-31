@@ -26,7 +26,7 @@ public class EditReader extends HttpServlet {
 
 
         request.setAttribute("result", result);
-        request.getRequestDispatcher("/Auth/editReaderRtn.jsp").forward(request,response);
+        request.getRequestDispatcher("/reader/editReaderRtn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
