@@ -1,5 +1,6 @@
 package com.example.repository;
 
+import com.example.domain.LendingRecord;
 import com.example.domain.Reader;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,4 +13,5 @@ public interface ReaderRepository {
     List<Reader> findAll();
     Reader findById(String id);
     Double sumBy(@Param("since")long since); //计算一个时间点之后的保证金收入总额
+
 }

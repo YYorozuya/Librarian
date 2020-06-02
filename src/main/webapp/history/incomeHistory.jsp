@@ -1,20 +1,30 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.domain.LendingRecord" %>
+<%@ page import="com.example.service.BusinessService" %>
 
+<%@ page contentType="text/html;charset=UTF-8"%>
+
+
+<% List<LendingRecord> list = BusinessService.lendingList();%>
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ReaderHistory</title>
+    <title>IncomeHistory</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
     <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/JsBarcode.all.min.js"></script>
 </head>
 
 <body>
+
 <nav class="navbar navbar-default" style="margin-bottom:0px;">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -33,14 +43,14 @@
                 <li class="home"><a href="${pageContext.request.contextPath}/">Home</a></li>
                 <li class="dropdown active home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
                     <ul class="dropdown-menu">
-                        <li><a href="bookList.jsp">BookList</a></li>
-                        <li><a href="addBook.jsp">AddBook</a></li>
-                        <li class="active"><a href="delBook.jsp">DeleteBook</a></li>
-                        <li><a href="editBook.jsp">EditBook</a></li>
+                        <li class="active"><a href="../book/bookList.jsp">BookList</a></li>
+                        <li><a href="../book/addBook.jsp">AddBook</a></li>
+                        <li><a href="../book/delBook.jsp">DeleteBook</a></li>
+                        <li><a href="../book/editBook.jsp">EditBook</a></li>
                     </ul>
                 </li>
-                <li class="home"><a href="addBook.jsp">Reader</a></li>
-                <li class="home"><a href="delBook.jsp">Records</a></li>
+                <li class="home"><a href="../book/addBook.jsp">Reader</a></li>
+                <li class="home"><a href="../book/delBook.jsp">Records</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <% //判断是否为登陆
@@ -66,22 +76,42 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
-    <h1 style="font-size:40px;color:purple;text-align:center"><em>Reader History</em></h1>
-</div>
-<div class="rg_area" style="background-color:white;margin:auto;height:70%;width:1000px;border:1px solid black;border-radius:3px;">
-    <form style="padding-left:200px;padding-top:50px;padding-right:200px;padding-bottom:50px;"
-          action="${pageContext.request.contextPath}/reader/readerHistoryRtn.jsp" method="POST">
-        <div><p style="font-size:20px;color:orange;">Input the reader's ID to view his history.</p></div>
-        <div class="form-group">
-            <label for="ReaderID">ID</label>
-            <input type="text" class="form-control" id="ReaderID" name="id"
-                   required = "required" pattern="[0-9]{1,11}">
-        </div>
-        <button type="submit" class="btn btn-default">View</button>
 
-    </form>
+<div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
+    <h1 style="font-size:40px; color:purple; text-align:center"><em>Income History</em></h1>
 </div>
+
+<div class="rg_area" style="background-color:white;margin:auto;width:70%;border:1px solid black;border-radius:3px;">
+    <table class="table table-striped" style="width:95%; margin:auto; margin-bottom: 10%">
+        <thead>
+        <tr>
+            <th>Type</th>
+            <th>Year</th>
+            <th>Month</th>
+            <th>Day</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%
+            List<Double> deposit = BusinessService.totalDeposit();
+            List<Double> fine = BusinessService.totalFine();
+        %>
+        <tr>
+            <td>Deposit</td>
+            <td><%=deposit.get(0)%></td>
+            <td><%=deposit.get(1)%></td>
+            <td><%=deposit.get(2)%></td>
+        </tr>
+        <tr>
+            <td>Fine</td>
+            <td><%=fine.get(0)%></td>
+            <td><%=fine.get(1)%></td>
+            <td><%=fine.get(2)%></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
 <div class="rg_5">Copyright @Mandarin-Library</div>
 </body>
 </html>

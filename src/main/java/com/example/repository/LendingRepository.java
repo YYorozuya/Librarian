@@ -13,5 +13,5 @@ public interface LendingRepository {
     Long isLent(String bkid); //检查一本书是否已被借走，返回0表示被借走，否则可以借出
     Long getBTime(int id); //返回一本书的借用时间
     List<LendingRecord> findAll();
-    LendingRecord findById(int id);
+    List<LendingRecord> findByReader(String rid);
 }

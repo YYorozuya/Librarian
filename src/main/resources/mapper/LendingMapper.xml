@@ -10,8 +10,8 @@
     <update id="reTurn">
         UPDATE lending SET rtime = #{time} WHERE id = #{id}
     </update>
-    <select id="findById" parameterType="int" resultType="com.example.domain.LendingRecord">
-        SELECT * FROM lending WHERE id = #{id}
+    <select id="findByReader" parameterType="java.lang.String" resultType="com.example.domain.LendingRecord">
+        SELECT * FROM lending WHERE rid = #{rid}
     </select>
     <select id="findAll" resultType="com.example.domain.LendingRecord">
         SELECT * FROM lending

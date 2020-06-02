@@ -1,5 +1,7 @@
 package com.example.service;
 
+import com.example.domain.LendingRecord;
+import com.example.repository.LendingRepository;
 import com.example.repository.SettingRepository;
 import com.example.utils.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
@@ -54,5 +56,7 @@ public class Settings {
         sqlSession.commit();
         return list;
     }
+
+
 
 }

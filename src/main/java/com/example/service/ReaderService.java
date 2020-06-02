@@ -1,7 +1,9 @@
 package com.example.service;
 
+import com.example.domain.LendingRecord;
 import com.example.domain.Reader;
 import com.example.repository.FineRepository;
+import com.example.repository.LendingRepository;
 import com.example.repository.ReaderRepository;
 import com.example.utils.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
@@ -71,6 +73,15 @@ public class ReaderService {
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return reader;
+    }
+
+    public static List<LendingRecord> lendingList() {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        LendingRepository brr = sqlSession.getMapper(LendingRepository.class);
+        List<LendingRecord> list = brr.findAll();
+        sqlSession.commit();
+        MyBatisUtil.closeSqlSession(sqlSession);
+        return list;
     }
 
 }

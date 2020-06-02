@@ -1,3 +1,10 @@
+<%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.domain.News" %>
+<%@ page import="com.example.service.NewsService" %>
+<%@ page import="java.time.Instant" %>
+<%@ page import="java.time.LocalDateTime" %>
+<%@ page import="java.time.ZoneId" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 
@@ -61,6 +68,7 @@
                         <li><a href="book/delBook.jsp">DeleteBook</a></li>
                         <li><a href="book/editBook.jsp">EditBook</a></li>
                         <li><a href="book/searchBook.jsp">SearchBook</a></li>
+                        <li><a href="book/bookSettings.jsp">BookSetting</a></li>
                     </ul>
                 </li>
                 <li class="dropdown home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Reader</a>
@@ -84,7 +92,7 @@
                         <li><a href="history/lendingHistory.jsp">Lending</a></li>
                         <li><a href="history/fineHistory.jsp">Fine</a></li>
                         <li><a href="reader/editReader.jsp">Delete</a></li>
-                        <li><a href="history/income.jsp">Income</a></li>
+                        <li><a href="history/incomeHistory.jsp">Income</a></li>
                     </ul>
                 </li>
                 <li class="dropdown home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">News</a>
@@ -142,7 +150,31 @@
             <img src="${pageContext.request.contextPath}/img/pic2.jpg" alt=".." style="margin:auto;margin-top:0px;heiht:200px;">
         </div>
         <div class="item">
-            <img src="${pageContext.request.contextPath}/img/pic2.jpg" alt=".." style="margin:auto;margin-top:0px;heiht:200px;">
+            <div class="rg_area" style="background-color:white;margin:auto;width:70%;height:600px;border:1px solid black;border-radius:3px;">
+                <div><p class="text-center" style="font-size:20px;color:orange; ">News:</p></div>
+                <table class="table" style="width:80%;margin:auto;margin-bottom:10%;text-align: center;">
+                    <%
+                        List<News> newsList = NewsService.newsList();
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                        for (News news: newsList){
+                            Instant instant = Instant.ofEpochSecond(news.getTime());
+                            LocalDateTime time = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+                    %>
+                    <thead>
+                        <tr>
+                            <td>Title</td>
+                            <td>Time</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><a href="${pageContext.request.contextPath}/news/newsPage.jsp?id=<%=news.getId()%>"><%=news.getTitle()%></a></td>
+                        <td><%=formatter.format(time)%></td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <div class="rg_5">Copyright @Mandarin-Library</div>

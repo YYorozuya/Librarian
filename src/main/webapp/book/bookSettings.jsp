@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.service.Settings" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -5,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ReaderHistory</title>
+    <title>Settings</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
@@ -67,19 +69,65 @@
     </div><!-- /.container-fluid -->
 </nav>
 <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
-    <h1 style="font-size:40px;color:purple;text-align:center"><em>Reader History</em></h1>
+    <h1 style="font-size:40px;color:purple;text-align:center"><em>Settings of category and location</em></h1>
 </div>
 <div class="rg_area" style="background-color:white;margin:auto;height:70%;width:1000px;border:1px solid black;border-radius:3px;">
-    <form style="padding-left:200px;padding-top:50px;padding-right:200px;padding-bottom:50px;"
-          action="${pageContext.request.contextPath}/reader/readerHistoryRtn.jsp" method="POST">
-        <div><p style="font-size:20px;color:orange;">Input the reader's ID to view his history.</p></div>
+    <form style="padding-left:200px;padding-top:50px;padding-right:200px;"
+          action="${pageContext.request.contextPath}/addcatecory" method="POST">
         <div class="form-group">
-            <label for="ReaderID">ID</label>
-            <input type="text" class="form-control" id="ReaderID" name="id"
-                   required = "required" pattern="[0-9]{1,11}">
+            <label for="AddC">Add Category</label>
+            <input type="text" class="form-control" id="AddC"  name="category" required = "required" pattern=".{1,20}">
         </div>
-        <button type="submit" class="btn btn-default">View</button>
+        <button type="submit" class="btn btn-default">Add</button>
+    </form>
+    <form style="padding-left:200px;padding-right:200px;"
+          action="${pageContext.request.contextPath}/delcatecory" method="POST">
+        <div class="form-group">
 
+            <label for="InputBookCategory">Delete Category</label>
+            <select class="form-control" id = InputBookCategory name="category">
+                <%
+                    List<String> categories = Settings.getCategories();
+                    for (String category:categories) {
+                %>
+                <option><%=category%></option>
+                <%}%>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default">Delete</button>
+    </form>
+    <form style="padding-left:200px;padding-right:200px;"
+          action="${pageContext.request.contextPath}/addlocation" method="GET">
+        <label>Add Location</label>
+        <div class="row">
+            <div class="col-lg-2">
+                <input type="text" class="form-control" placeholder="Floor" name="floor">
+            </div>
+            <div class="col-lg-2">
+                <input type="text" class="form-control" placeholder="Shelf" name = "shelf">
+            </div>
+            <div class="col-lg-2">
+                <input type="text" class="form-control" placeholder="Area" name = "area">
+            </div>
+            <div class="col-lg-2">
+                <button type="submit" class="btn btn-default">Add</button>
+            </div>
+        </div>
+    </form>
+    <form style="padding-left:200px;padding-right:200px;padding-bottom:50px"
+          action="${pageContext.request.contextPath}/dellocation" method="POST">
+        <div class="form-group">
+            <label for="InputLocation">Delete Location</label>
+            <select class="form-control" id = InputLocation name="location">
+                <%
+                    List<String> locations = Settings.getLocations();
+                    for (String location:locations) {
+                %>
+                <option><%=location%></option>
+                <%}%>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default">Delete</button>
     </form>
 </div>
 <div class="rg_5">Copyright @Mandarin-Library</div>

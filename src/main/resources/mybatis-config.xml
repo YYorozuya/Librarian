@@ -18,7 +18,7 @@
     <mappers> <!--classpath的相对资源-->
         <mapper resource="mapper/BookMapper.xml"/>
         <mapper resource="mapper/ReaderMapper.xml"/>
-        <mapper resource="mapper/LendReturnMapper.xml"/>
+        <mapper resource="mapper/LendingMapper.xml"/>
         <mapper resource="mapper/FineMapper.xml"/>
         <mapper resource="mapper/NewsMapper.xml"/>
         <mapper resource="mapper/DelRecordMapper.xml"/>

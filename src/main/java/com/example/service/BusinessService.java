@@ -87,14 +87,14 @@ public class BusinessService {
         return list;
     }
 
-    //按照id查找借还书记录
-    public static LendingRecord findById(int id) {
+    //按照Reader查找借还书记录
+    public static List<LendingRecord> readerLending(String rid) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         LendingRepository brr = sqlSession.getMapper(LendingRepository.class);
-        LendingRecord record = brr.findById(id);
+        List<LendingRecord> list = brr.findByReader(rid);
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
-        return record;
+        return list;
     }
 
     //缴纳记录为id的罚款
@@ -117,6 +117,17 @@ public class BusinessService {
         MyBatisUtil.closeSqlSession(sqlSession);
         return list;
     }
+
+    //获得读者罚款记录
+    public static List<FineRecord> readerFine(String rid) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        FineRepository fr = sqlSession.getMapper(FineRepository.class);
+        List<FineRecord> list = fr.findByReader(rid);
+        sqlSession.commit();
+        MyBatisUtil.closeSqlSession(sqlSession);
+        return list;
+    }
+
 
     //返回一个List，前三项分别为保证金本年收入，本月收入，本日收入
     public static List<Double> totalDeposit() {
@@ -170,37 +181,5 @@ public class BusinessService {
         return list;
     }
 
-    //发送公告
-    public static int postNews(String title, String content) {
-        SqlSession sqlSession = MyBatisUtil.getSqlSession();
-        NewsRepository nr = sqlSession.getMapper(NewsRepository.class);
-        long now = Instant.now().getEpochSecond(); //获得当前以秒为单位的时间戳
-        News news = new News(0,title,content,now);
-        int result = nr.insert(news);
-        sqlSession.commit();
-        MyBatisUtil.closeSqlSession(sqlSession);
-        return result;
-    }
-
-    //删除公告
-    public static int deleteNews(int id) {
-        SqlSession sqlSession = MyBatisUtil.getSqlSession();
-        NewsRepository nr = sqlSession.getMapper(NewsRepository.class);
-        int result = nr.delete(id);
-        sqlSession.commit();
-        MyBatisUtil.closeSqlSession(sqlSession);
-        return result;
-    }
-
-    //编辑公告
-    public static int editNews(int id, String title, String content) {
-        SqlSession sqlSession = MyBatisUtil.getSqlSession();
-        NewsRepository nr = sqlSession.getMapper(NewsRepository.class);
-        News news = new News(id,title,content,0);
-        int result = nr.edit(news);
-        sqlSession.commit();
-        MyBatisUtil.closeSqlSession(sqlSession);
-        return result;
-    }
 
 }

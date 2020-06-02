@@ -8,4 +8,5 @@ public interface NewsRepository {
     int delete(int id);
     int edit(News news);
     List<News> findAll();
+    News findById(int id);
 }

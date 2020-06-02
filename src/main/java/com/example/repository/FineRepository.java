@@ -11,4 +11,5 @@ public interface FineRepository {
     Double sumBy(@Param("since")long since); //计算一个时间点之后的总罚金收入
     int check(String id);
     List<FineRecord> findAll();
+    List<FineRecord> findByReader(String rid);
 }

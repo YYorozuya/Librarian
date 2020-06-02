@@ -78,7 +78,7 @@
 </div>
 <div class="rg_area" style="background-color:white;margin:auto;width:70%;border:1px solid black;border-radius:3px;">
     <form style="padding-left:200px;padding-top:50px;padding-right:200px;padding-bottom:50px;"
-          action="${pageContext.request.contextPath}/addbook" method="POST">
+          action="${pageContext.request.contextPath}/postnews" method="POST">
         <div><p style="font-size:20px;color:orange;">Please input the content of this news:</p></div>
         <div class="form-group">
             <label for="InputBookName">Title</label>
