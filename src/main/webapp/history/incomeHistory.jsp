@@ -1,11 +1,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.domain.LendingRecord" %>
-<%@ page import="com.example.service.BusinessService" %>
-
+<%@ page import="com.example.service.HistoryService" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 
 
-<% List<LendingRecord> list = BusinessService.lendingList();%>
 
 <!DOCTYPE html>
 <html>
@@ -125,8 +123,8 @@
         </thead>
         <tbody>
         <%
-            List<Double> deposit = BusinessService.totalDeposit();
-            List<Double> fine = BusinessService.totalFine();
+            List<Double> deposit = HistoryService.totalDeposit();
+            List<Double> fine = HistoryService.totalFine();
         %>
         <tr>
             <td>Deposit</td>

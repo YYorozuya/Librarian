@@ -1,15 +1,14 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.example.domain.LendingRecord" %>
-<%@ page import="com.example.service.BusinessService" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.time.Instant" %>
 <%@ page import="java.time.LocalDateTime" %>
 <%@ page import="java.time.ZoneId" %>
 <%@ page import="com.example.domain.FineRecord" %>
+<%@ page import="com.example.service.HistoryService" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 
 
-<% List<FineRecord> list = BusinessService.fineList();%>
+<% List<FineRecord> list = HistoryService.fineList();%>
 
 <!DOCTYPE html>
 <html>

@@ -75,13 +75,5 @@ public class ReaderService {
         return reader;
     }
 
-    public static List<LendingRecord> lendingList() {
-        SqlSession sqlSession = MyBatisUtil.getSqlSession();
-        LendingRepository brr = sqlSession.getMapper(LendingRepository.class);
-        List<LendingRecord> list = brr.findAll();
-        sqlSession.commit();
-        MyBatisUtil.closeSqlSession(sqlSession);
-        return list;
-    }
 
 }

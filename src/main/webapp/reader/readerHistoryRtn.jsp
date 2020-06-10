@@ -1,18 +1,18 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.domain.LendingRecord" %>
-<%@ page import="com.example.service.BusinessService" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.time.Instant" %>
 <%@ page import="java.time.LocalDateTime" %>
 <%@ page import="java.time.ZoneId" %>
 <%@ page import="com.example.domain.FineRecord" %>
+<%@ page import="com.example.service.HistoryService" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 
 
 <%
     String reader = request.getParameter("id");
-    List<LendingRecord> lending = BusinessService.readerLending(reader);
-    List<FineRecord> fine = BusinessService.readerFine(reader);
+    List<LendingRecord> lending = HistoryService.readerLending(reader);
+    List<FineRecord> fine = HistoryService.readerFine(reader);
 %>
 
 <!DOCTYPE html>
