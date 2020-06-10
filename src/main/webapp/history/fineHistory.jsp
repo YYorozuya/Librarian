@@ -136,7 +136,7 @@
             for (FineRecord fine: list){
                 Instant instantB = Instant.ofEpochSecond(fine.getRecord().getBtime());
                 LocalDateTime btime = LocalDateTime.ofInstant(instantB, ZoneId.systemDefault());
-                Instant instantR = Instant.ofEpochSecond(fine.getRecord().getBtime());
+                Instant instantR = Instant.ofEpochSecond(fine.getRecord().getRtime());
                 LocalDateTime rtime = LocalDateTime.ofInstant(instantR, ZoneId.systemDefault());
         %>
         <tr>

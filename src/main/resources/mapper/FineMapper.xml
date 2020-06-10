@@ -17,6 +17,9 @@
     <insert id="insert">
         INSERT INTO fine (id,amount,time) VALUES (#{id},0,0)
     </insert>
+    <select id="finevalue" resultType="int">
+        SELECT fvalue FROM `system`
+    </select>
     <update id="pay">
         UPDATE fine SET amount = #{amount}, time = #{time} WHERE id = #{id}
     </update>

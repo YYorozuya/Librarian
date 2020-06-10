@@ -12,6 +12,7 @@ public interface ReaderRepository {
     int delete(String id);
     List<Reader> findAll();
     Reader findById(String id);
+    int deposit();
     Double sumBy(@Param("since")long since); //计算一个时间点之后的保证金收入总额
 
 }

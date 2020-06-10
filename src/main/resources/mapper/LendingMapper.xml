@@ -7,6 +7,9 @@
         INSERT INTO lending (id, bkid, rid, btime, rtime)
             VALUES (#{id}, #{bkid}, #{rid}, #{btime}, #{rtime})
     </insert>
+    <select id="period" resultType="int">
+        SELECT period FROM `system`
+    </select>
     <update id="reTurn">
         UPDATE lending SET rtime = #{time} WHERE id = #{id}
     </update>

@@ -13,10 +13,11 @@ import java.util.List;
 
 public class ReaderService {
     public static int register(String id, String name, String email) {
-        long now = Instant.now().getEpochSecond(); //获得当前以秒为单位的时间戳
-        Reader reader = new Reader(id,"12345678",name,email,now,300);
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         ReaderRepository rr = sqlSession.getMapper(ReaderRepository.class);
+        int deposit = rr.deposit();
+        long now = Instant.now().getEpochSecond(); //获得当前以秒为单位的时间戳
+        Reader reader = new Reader(id,"12345678",name,email,now,deposit);
         int result = rr.insert(reader);
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);

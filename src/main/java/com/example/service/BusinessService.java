@@ -62,13 +62,14 @@ public class BusinessService {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         LendingRepository lrr = sqlSession.getMapper(LendingRepository.class);
         Instant now = Instant.now();
-        long nowLong = now.getEpochSecond();//获得当前以秒为单位的时间戳
+        long nowLong = now.getEpochSecond(); //获得当前以秒为单位的时间戳
         LocalDateTime nowTime = LocalDateTime.ofInstant(now, ZoneId.systemDefault());
-        LocalDateTime pastTime = nowTime.minusDays(90);
-        long pastLong = pastTime.atZone(ZoneId.systemDefault()).toEpochSecond();//获得90天前以秒为单位的时间戳
+        int period = lrr.period(); //获得数据库中的还书期限
+        LocalDateTime pastTime = nowTime.minusDays(period);
+        long pastLong = pastTime.atZone(ZoneId.systemDefault()).toEpochSecond(); //获得当前日期减去期限天数的以秒为单位的时间戳
         int result = lrr.reTurn(id,nowLong);
         Long borrowTime = lrr.getBTime(id);
-        if (borrowTime != null && borrowTime < pastLong) { //超过90天加入罚款记录
+        if (borrowTime != null && borrowTime < pastLong) { //超过期限加入罚款记录
             FineRepository fr = sqlSession.getMapper(FineRepository.class);
             fr.insert(id);
             result = 2;
@@ -83,10 +84,23 @@ public class BusinessService {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         FineRepository fr = sqlSession.getMapper(FineRepository.class);
         long now = Instant.now().getEpochSecond();
-        int result = fr.pay(id, now,5);
+        int amount = fr.finevalue();
+        int result = fr.pay(id, now, amount);
         sqlSession.commit();
         MyBatisUtil.closeSqlSession(sqlSession);
         return result;
     }
 
+    //管理员登陆，成功返回1失败返回0
+    public static int libAuthCheck(String account, String pwd) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        LibrarianRepository lbr = sqlSession.getMapper(LibrarianRepository.class);
+        String password = lbr.check(account);
+        int result = 0;
+        if (pwd.equals(password))
+            result = 1;
+        sqlSession.commit();
+        MyBatisUtil.closeSqlSession(sqlSession);
+        return result;
+    }
 }

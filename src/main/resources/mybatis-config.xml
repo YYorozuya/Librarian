@@ -23,6 +23,7 @@
         <mapper resource="mapper/NewsMapper.xml"/>
         <mapper resource="mapper/DelRecordMapper.xml"/>
         <mapper resource="mapper/SettingMapper.xml"/>
+        <mapper resource="mapper/LibrarianMapper.xml"/>
     </mappers>
 
 </configuration>

@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface LendingRepository {
     int lend(LendingRecord record);
+    int period();
     int reTurn(@Param("id")int id, @Param("time")long time);
     int getBNum(String rid); //获取一个用户所借书籍数量
     String resvdBy(String bkid); //检查一本书是否被预定。返回预定者的id

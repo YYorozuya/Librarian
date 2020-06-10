@@ -3,6 +3,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.repository.ReaderRepository">
+    <select id="deposit" resultType="int">
+        SELECT deposit FROM `system`
+    </select>
     <insert id="insert" parameterType="com.example.domain.Reader">
         INSERT INTO reader (id, passwd, name, email, ctime, deposit)
             VALUES (#{id}, #{passwd}, #{name}, #{email}, #{ctime}, #{deposit})

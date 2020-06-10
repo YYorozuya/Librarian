@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import com.example.service.BusinessService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,9 +13,11 @@ import java.io.IOException;
 public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
-        String name = request.getParameter("name");
+        String passwd = request.getParameter("passwd");
 
-        if (id.equals("asd")) {
+        int success = BusinessService.libAuthCheck(id,passwd);
+
+        if (success == 1) {
             request.getSession().setAttribute("LibrarianID",id);
             response.sendRedirect("/");
         }
