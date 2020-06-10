@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.domain.DelRecord;
 import com.example.domain.LendingRecord;
 import com.example.domain.FineRecord;
 import com.example.domain.News;
@@ -118,6 +119,15 @@ public class BusinessService {
         return list;
     }
 
+    public static List<DelRecord> delList() {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        DelRecordRepository dr = sqlSession.getMapper(DelRecordRepository.class);
+        List<DelRecord> list = dr.findAll();
+        sqlSession.commit();
+        MyBatisUtil.closeSqlSession(sqlSession);
+        return list;
+    }
+
     //获得读者罚款记录
     public static List<FineRecord> readerFine(String rid) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
@@ -127,7 +137,6 @@ public class BusinessService {
         MyBatisUtil.closeSqlSession(sqlSession);
         return list;
     }
-
 
     //返回一个List，前三项分别为保证金本年收入，本月收入，本日收入
     public static List<Double> totalDeposit() {

@@ -40,23 +40,56 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="home"><a href="${pageContext.request.contextPath}/">Home</a></li>
-                <li class="dropdown active home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
+                <li class="dropdown home"><a href="${pageContext.request.contextPath}/">Home</a></li>
+                <li class="dropdown home" ><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book</a>
                     <ul class="dropdown-menu">
-                        <li class="active"><a href="../book/bookList.jsp">BookList</a></li>
-                        <li><a href="../book/addBook.jsp">AddBook</a></li>
-                        <li><a href="../book/delBook.jsp">DeleteBook</a></li>
-                        <li><a href="../book/editBook.jsp">EditBook</a></li>
+                        <li><a href="${pageContext.request.contextPath}/book/bookList.jsp">BookList</a></li>
+                        <li><a href="${pageContext.request.contextPath}/book/addBook.jsp">AddBook</a></li>
+                        <li><a href="${pageContext.request.contextPath}/book/delBook.jsp">DeleteBook</a></li>
+                        <li><a href="${pageContext.request.contextPath}/book/editBook.jsp">EditBook</a></li>
+                        <li><a href="${pageContext.request.contextPath}/book/searchBook.jsp">SearchBook</a></li>
+                        <li><a href="${pageContext.request.contextPath}/book/bookSettings.jsp">BookSetting</a></li>
                     </ul>
                 </li>
-                <li class="home"><a href="../book/addBook.jsp">Reader</a></li>
-                <li class="home"><a href="../book/delBook.jsp">Records</a></li>
+                <li class="dropdown home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Reader</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="${pageContext.request.contextPath}/reader/readerList.jsp">List</a></li>
+                        <li><a href="${pageContext.request.contextPath}/reader/register.jsp">Register</a></li>
+                        <li><a href="${pageContext.request.contextPath}/reader/editReader.jsp">Edit</a></li>
+                        <li><a href="${pageContext.request.contextPath}/reader/delReader.jsp">Delete</a></li>
+                        <li><a href="${pageContext.request.contextPath}/reader/readerHistory.jsp">History</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Business</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="${pageContext.request.contextPath}/business/lendBook.jsp">Lend Book</a></li>
+                        <li><a href="${pageContext.request.contextPath}/business/returnBook.jsp">Return Book</a></li>
+                        <li><a href="${pageContext.request.contextPath}/business/payFine.jsp">Pay Fine</a></li>
+                    </ul>
+                </li>
+                <li class="active home"><a href="#" class="dropdown-toggle" data-toggle="dropdown">History</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="${pageContext.request.contextPath}/history/lendingHistory.jsp">Lending</a></li>
+                        <li><a href="${pageContext.request.contextPath}/history/fineHistory.jsp">Fine</a></li>
+                        <li><a href="${pageContext.request.contextPath}/history/delHistory.jsp">Delete</a></li>
+                        <li><a href="${pageContext.request.contextPath}/history/incomeHistory.jsp">Income</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown home"><a href="${pageContext.request.contextPath}/news/postnews.jsp" class="dropdown-toggle" data-toggle="dropdown">News</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="${pageContext.request.contextPath}/news/postnews.jsp">Post News</a></li>
+                    </ul>
+                </li>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <% //判断是否为登陆
                     String id = (String) session.getAttribute("LibrarianID");
                     if(id == null){
                 %>
+                <li>
+                    <a href="${pageContext.request.contextPath}/login.jsp">Recovery</a>
+                </li>
                 <li>
                     <a href="${pageContext.request.contextPath}/login.jsp">Login</a>
                 </li>
@@ -76,7 +109,6 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-
 <div class="jumbotron" style="background-color:#E6E6E6;color:black;margin-top:0px;margin-bottom:0px;">
     <h1 style="font-size:40px; color:purple; text-align:center"><em>Income History</em></h1>
 </div>

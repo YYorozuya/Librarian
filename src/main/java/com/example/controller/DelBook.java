@@ -13,8 +13,9 @@ public class DelBook extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String bkid = request.getParameter("id");
+        String reason = request.getParameter("reason");
         String libid = (String) request.getSession().getAttribute("LibrarianID");
-        int result = BookService.delete(bkid,libid);
+        int result = BookService.delete(bkid,libid,reason);
         String resultWords;
         if (result == 1)
             resultWords = "Succeed.";

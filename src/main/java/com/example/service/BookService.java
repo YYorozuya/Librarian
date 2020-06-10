@@ -37,7 +37,7 @@ public class BookService {
         return after-before; //返回实际添加的书籍数目
     }
 
-    public static int delete(String bkid, String libid) {
+    public static int delete(String bkid, String libid, String reason) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         BookRepository br = sqlSession.getMapper(BookRepository.class);
         LendingRepository lrr = sqlSession.getMapper(LendingRepository.class);
@@ -47,7 +47,7 @@ public class BookService {
             result = br.delete(bkid);
             DelRecordRepository dr = sqlSession.getMapper(DelRecordRepository.class);
             long now = Instant.now().getEpochSecond();
-            dr.insert(new DelRecord(0, bkid, libid, now));
+            dr.insert(new DelRecord(0, bkid, libid, reason, now));
         }
         else
             result = 0;
