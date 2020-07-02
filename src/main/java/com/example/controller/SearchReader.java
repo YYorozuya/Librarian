@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import com.example.service.BookService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -7,17 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/logout")
-public class Logout extends HttpServlet {
+@WebServlet("/searchreader")
+public class SearchReader extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
+        request.setCharacterEncoding("UTF-8");
+        request.getRequestDispatcher("/Librarian/reader/searchReaderRtn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Object librarianid = request.getSession().getAttribute("LibrarianID");
-        if (librarianid != null) {
-            request.getSession().removeAttribute("LibrarianID");
-            response.sendRedirect("/Librarian");
-        }
+        doPost(request,response);
     }
 }

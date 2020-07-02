@@ -77,6 +77,7 @@
                         <li><a href="${pageContext.request.contextPath}/reader/register.jsp">Register</a></li>
                         <li><a href="${pageContext.request.contextPath}/reader/editReader.jsp">Edit</a></li>
                         <li><a href="${pageContext.request.contextPath}/reader/delReader.jsp">Delete</a></li>
+                        <li><a href="${pageContext.request.contextPath}/reader/searchReader.jsp">Search</a></li>
                         <li><a href="${pageContext.request.contextPath}/reader/readerHistory.jsp">History</a></li>
                     </ul>
                 </li>
@@ -108,7 +109,7 @@
                     if(id == null){
                 %>
                 <li>
-                    <a href="${pageContext.request.contextPath}/login.jsp">Recovery</a>
+                    <a href="http://localhost:8080/admin/Login.html">Recovery</a>
                 </li>
                 <li>
                     <a href="${pageContext.request.contextPath}/login.jsp">Login</a>
@@ -154,13 +155,6 @@
             <div class="rg_area" style="background-color:white;margin:auto;width:70%;height:600px;border:1px solid black;border-radius:3px;">
                 <div><p class="text-center" style="font-size:20px;color:orange; ">News:</p></div>
                 <table class="table" style="width:80%;margin:auto;margin-bottom:10%;text-align: center;">
-                    <%
-                        List<News> newsList = NewsService.newsList();
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                        for (News news: newsList){
-                            Instant instant = Instant.ofEpochSecond(news.getTime());
-                            LocalDateTime time = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
-                    %>
                     <thead>
                         <tr>
                             <td>Title</td>
@@ -168,6 +162,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <%
+                        List<News> newsList = NewsService.newsList();
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                        for (News news: newsList){
+                            Instant instant = Instant.ofEpochSecond(news.getTime());
+                            LocalDateTime time = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+                    %>
                     <tr>
                         <td><a href="${pageContext.request.contextPath}/news/newsPage.jsp?id=<%=news.getId()%>"><%=news.getTitle()%></a></td>
                         <td><%=formatter.format(time)%></td>

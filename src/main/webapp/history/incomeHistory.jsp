@@ -55,6 +55,7 @@
                         <li><a href="${pageContext.request.contextPath}/reader/register.jsp">Register</a></li>
                         <li><a href="${pageContext.request.contextPath}/reader/editReader.jsp">Edit</a></li>
                         <li><a href="${pageContext.request.contextPath}/reader/delReader.jsp">Delete</a></li>
+                        <li><a href="${pageContext.request.contextPath}/reader/searchReader.jsp">Search</a></li>
                         <li><a href="${pageContext.request.contextPath}/reader/readerHistory.jsp">History</a></li>
                     </ul>
                 </li>

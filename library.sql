@@ -81,7 +81,6 @@ CREATE TABLE IF NOT EXISTS `del_record`
 
 CREATE TABLE IF NOT EXISTS `reserve`
 (
-    `id` INT AUTO_INCREMENT, /* 记录id*/
     `bkid` VARCHAR(17) NOT NULL, /* 书籍id */
     `rid` VARCHAR(11) NOT NULL /* 读者id */
 ) DEFAULT CHARSET=UTF8MB4;

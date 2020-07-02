@@ -19,7 +19,7 @@ public class Login extends HttpServlet {
 
         if (success == 1) {
             request.getSession().setAttribute("LibrarianID",id);
-            response.sendRedirect("/");
+            response.sendRedirect("/Librarian");
         }
         else {
             request.setAttribute("failed",0);

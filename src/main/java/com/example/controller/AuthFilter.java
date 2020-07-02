@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-//@WebFilter(urlPatterns = {"/book/*","/reader/*","/business/*","/history/*","/news/*"})
+@WebFilter(urlPatterns = {"/book/*","/reader/*","/business/*","/history/*","/news/*"})
 public class AuthFilter implements Filter {
     public void destroy() {
     }
@@ -17,7 +17,7 @@ public class AuthFilter implements Filter {
 
         if (request.getSession().getAttribute("LibrarianID") == null) {
             // 未登录，自动跳转到登录页:
-            response.sendRedirect("/login.jsp");
+            response.sendRedirect("/Librarian/login.jsp");
         } else {
             // 已登录，继续处理:
             chain.doFilter(request, response);

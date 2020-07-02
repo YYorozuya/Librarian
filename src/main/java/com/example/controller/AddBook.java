@@ -27,7 +27,7 @@ public class AddBook extends HttpServlet {
 
         request.setAttribute("addedNum",added);
 
-        request.getRequestDispatcher("/book/addBookRtn.jsp").forward(request,response);
+        request.getRequestDispatcher("book/addBookRtn.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,6 +1,5 @@
 package com.example.service;
 
-import com.google.zxing.WriterException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
