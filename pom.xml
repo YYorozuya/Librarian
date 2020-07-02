@@ -25,7 +25,6 @@
       <scope>provided</scope>
     </dependency>
 
-
     <dependency>
       <groupId>javax.servlet.jsp</groupId>
       <artifactId>javax.servlet.jsp-api</artifactId>
@@ -33,13 +32,11 @@
       <scope>provided</scope>
     </dependency>
 
-
     <dependency>
       <groupId>javax.servlet.jsp.jstl</groupId>
       <artifactId>jstl</artifactId>
       <version>1.2</version>
     </dependency>
-
 
     <dependency>
       <groupId>org.mybatis</groupId>
@@ -67,23 +64,9 @@
       <scope>test</scope>
     </dependency>
 
-
-    <dependency>
-      <groupId>com.google.zxing</groupId>
-      <artifactId>core</artifactId>
-      <version>3.4.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.google.zxing</groupId>
-      <artifactId>javase</artifactId>
-      <version>3.4.0</version>
-    </dependency>
-
-
-
   </dependencies>
 
+  
   <build>
     <finalName>Librarian</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
